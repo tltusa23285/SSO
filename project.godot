@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 KeyMap="*res://Scripts/InputManagement/KeyMap.cs"
 HotbarMap="*res://Scripts/InputManagement/HotBars/HotbarMap.cs"
+DamageNumberHandler="*res://Prefabs/UI/damage_number_handler.tscn"
 
 [debug_draw_3d]
 

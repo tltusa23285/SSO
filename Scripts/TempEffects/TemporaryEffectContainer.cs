@@ -21,7 +21,7 @@ namespace TemporaryEffects
 
 		private Dictionary<string, TemporaryEffect> Effects = new Dictionary<string, TemporaryEffect>();
 
-		public void AddEffect(string id, TemporaryEffect effect)
+		public void AddEffect(string id, in Actor source, TemporaryEffect effect)
 		{
 			if (Effects.ContainsKey(id))
 			{
@@ -29,7 +29,7 @@ namespace TemporaryEffects
 				return;
 			}
 			Effects.Add(id, effect);
-			effect.InitialApplication(Actor);
+			effect.InitialApplication(source, Actor);
 			OnEffectAdded?.Invoke(effect);
 		}
 

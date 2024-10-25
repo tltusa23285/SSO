@@ -7,6 +7,7 @@ public partial class Health : Node
 
     public int CurrentHealth { get; private set; }
 	[Export] public int MaxHealth;
+	[Export] private Actors.Actor Source;
 
 	public void Setup(in int max)
 	{
@@ -18,6 +19,7 @@ public partial class Health : Node
     public void Damage(int amount)
 	{
 		CurrentHealth = Mathf.Clamp(CurrentHealth - amount, 0, MaxHealth);
+		DamageNumberSpawner.Instance.Spawn(this.Source, amount);
 		EmitSignal(SignalName.HealthChange, CurrentHealth, MaxHealth);
     }
 

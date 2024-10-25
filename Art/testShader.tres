@@ -195,7 +195,6 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-499.669, -278.861)
 varyings/LocalVertex = "0,4"
 varyings/Perccontrol = "0,0"
 nodes/vertex/0/position = Vector2(1520, 520)

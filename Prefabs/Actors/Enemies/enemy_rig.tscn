@@ -40,8 +40,9 @@ debug_enabled = true
 script = ExtResource("2_ni6rs")
 Category = 1
 
-[node name="TempEffectContainer" type="Node" parent="."]
+[node name="TempEffectContainer" type="Node" parent="." node_paths=PackedStringArray("Actor")]
 script = ExtResource("4_ydnc8")
+Actor = NodePath("..")
 
 [node name="EnemyController" type="Node" parent="." node_paths=PackedStringArray("AggroArea", "Agent", "C_Actor")]
 script = ExtResource("5_p3q5l")
@@ -49,9 +50,10 @@ AggroArea = NodePath("../AggroArea")
 Agent = NodePath("../NavigationAgent3D")
 C_Actor = NodePath("..")
 
-[node name="Health" type="Node" parent="."]
+[node name="Health" type="Node" parent="." node_paths=PackedStringArray("Source")]
 script = ExtResource("2_25qg2")
 MaxHealth = 100
+Source = NodePath("..")
 
 [node name="AggroArea" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

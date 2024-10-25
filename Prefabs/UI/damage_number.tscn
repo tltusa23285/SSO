@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://dsw763fjxknvb"]
+
+[ext_resource type="Script" path="res://Scripts/UI/FlyingDamageNumber.cs" id="1_64len"]
+
+[sub_resource type="Curve" id="Curve_eyklu"]
+max_value = 2.0
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.130208, 1.67789), 0.0, 0.0, 0, 0, Vector2(0.239583, 0.876747), 0.0, 0.0, 0, 0, Vector2(0.802083, 1.02541), -0.0485437, -0.0485437, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_x6yaa"]
+viewport_path = NodePath("SubViewport")
+
+[node name="DamageNumber" type="Node3D" node_paths=PackedStringArray("Num")]
+script = ExtResource("1_64len")
+Num = NodePath("SubViewport/Label")
+Curve = SubResource("Curve_eyklu")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(64, 64)
+
+[node name="Label" type="Label" parent="SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 1
+text = "999"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+texture = SubResource("ViewportTexture_x6yaa")

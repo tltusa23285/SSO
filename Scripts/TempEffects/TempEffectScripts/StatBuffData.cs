@@ -12,19 +12,19 @@ namespace TemporaryEffects
         [Export] public StatBuff.MODTYPE ModType;
         [Export] public int ModValue;
 
-        protected override bool CanApply(in Actor actor)
+        protected override bool CanApply(in Actor source, in Actor target)
         {
-            return actor.Stats.GetStat(StatToMod, out _);
+            return target.Stats.GetStat(StatToMod, out _);
         }
 
-        protected override TemporaryEffect GetEffect()
+        protected override TemporaryEffect GetEffect(in Actor source, in Actor target)
         {
             return new StatBuff(this);
         }
 
         public class StatBuff : TemporaryEffect
         {
-            private readonly StatBuffData BuffData;
+            private StatBuffData BuffData => Data as StatBuffData;
 
             public enum MODTYPE
             {
@@ -33,7 +33,6 @@ namespace TemporaryEffects
 
             public StatBuff(StatBuffData dat) : base(dat)
             {
-                BuffData = dat;
             }
 
             protected override void OnApply()

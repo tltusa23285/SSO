@@ -24,12 +24,12 @@ namespace Strategies
                 case APP_TYPE.Targets:
                     foreach (var item in targets)
                     {
-                        if (!Effect.ApplyEffect(item))
+                        if (!Effect.ApplyEffect(source, item))
                             GD.PushError($"Failed to apply temp effect {Effect.EffectId} to {item.Stats.DisplayName}");
                     }
                     break;
                 case APP_TYPE.Source:
-                    if (!Effect.ApplyEffect(source))
+                    if (!Effect.ApplyEffect(source, source))
                         GD.PushError($"Failed to apply temp effect {Effect.EffectId} to {source.Stats.DisplayName}");
                     break;
                 default:

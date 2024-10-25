@@ -42,15 +42,15 @@ namespace TemporaryEffects
         [Export] public int TimeAddedOnRefresh = 999;
 
 
-		public bool ApplyEffect(in Actor actor)
+		public bool ApplyEffect(in Actor source, in Actor target)
 		{
-			if (!CanApply(actor)) return false;
-			actor.TempEffects.AddEffect(EffectId, GetEffect());
+			if (!CanApply(source, target)) return false;
+			target.TempEffects.AddEffect(EffectId, source, GetEffect(source, target));
 			return true;
 		}
 
-		protected abstract bool CanApply(in Actor actor);
-		protected abstract TemporaryEffect GetEffect();
+		protected abstract bool CanApply(in Actor source, in Actor target);
+		protected abstract TemporaryEffect GetEffect(in Actor source, in Actor target);
 
 	}
 
@@ -65,13 +65,14 @@ namespace TemporaryEffects
 		{
 			Data = dat;
 		}
-
-		protected Actor Target;
+        protected Actor Source;
+        protected Actor Target;
 		public float Timer { get; protected set; }
 
-		public void InitialApplication(Actor a)
+		public void InitialApplication(in Actor source, in Actor target)
 		{
-			Target = a;
+			Source = source;
+			Target = target;
 
 			Timer = Data.MaxDuration;
 
@@ -90,7 +91,7 @@ namespace TemporaryEffects
             Target.TempEffects.RemoveEffect(this.Data.EffectId);
         }
 
-		public void UpdateTime(float delta)
+		public virtual void UpdateTime(float delta)
 		{
 			Timer -= delta;
 			if (Timer <= 0)
