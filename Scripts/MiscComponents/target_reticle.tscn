@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqmdgjffe2l5v"]
+
+[ext_resource type="Script" path="res://Scripts/MiscComponents/TargetIndicator.cs" id="1_lt1fs"]
+
+[sub_resource type="TorusMesh" id="TorusMesh_f08k6"]
+
+[node name="TargetReticle" type="Node3D" node_paths=PackedStringArray("Reticle")]
+script = ExtResource("1_lt1fs")
+Reticle = NodePath(".")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.209967, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("TorusMesh_f08k6")

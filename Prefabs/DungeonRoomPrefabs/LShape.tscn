@@ -1,0 +1,60 @@
+[gd_scene load_steps=9 format=3 uid="uid://b1guri6nn3d4k"]
+
+[ext_resource type="Script" path="res://Scripts/Dungeon/DungeonRoom.cs" id="1_wvs4y"]
+[ext_resource type="ArrayMesh" uid="uid://b47s256nqlb72" path="res://Art/Environment/RoomBase_Door.res" id="2_lpbll"]
+[ext_resource type="ArrayMesh" uid="uid://150hq36ff6" path="res://Art/Environment/RoomBase_Pillars.res" id="3_hhatx"]
+[ext_resource type="Material" uid="uid://cjibp8nkwqb6b" path="res://Art/Environment/RoomFloor.tres" id="4_iyoep"]
+[ext_resource type="ArrayMesh" uid="uid://cd5mku84i50uf" path="res://Art/Environment/RoomBase_Plane.res" id="5_ckcwk"]
+[ext_resource type="ArrayMesh" uid="uid://0qfyemo6x1b5" path="res://Art/Environment/RoomBase_Roof.res" id="6_c7rb5"]
+[ext_resource type="ArrayMesh" uid="uid://keoh70jp48bu" path="res://Art/Environment/RoomBase_Wall.res" id="7_dpyvl"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_gidps"]
+vertices = PackedVector3Array(9, 0.5, 2.25, 9.5, 0.5, 2, 9.5, 0.5, -1.75, -3.75, 0.5, -8.75, -4, 0.5, -9.25, -7.75, 0.5, -9.25, -8, 0.5, -7.75, 2.25, 0.5, -8.75, 2, 0.5, -9.5, -1.75, 0.5, -9.5, -2, 0.5, -8.75, 9, 0.5, 2.25, 9.5, 0.5, -1.75, 9, 0.5, -2, 8, 0.5, 8, -9.25, 0.5, -7.75, -9.25, 0.5, 8, -8, 0.5, 8, -8, 0.5, -7.75, 2.25, 0.5, -8.75, -2, 0.5, -8.75, -8, 0.5, -7.75, 8, 0.5, -8, 8, 0.5, -9.25, 2.25, 0.5, -8.75, 8, 0.5, 8, 9.25, 0.5, 7.75, 9, 0.5, 2.25, 9, 0.5, -2, 9.25, 0.5, -7.75, 8, 0.5, -8, 2.25, 0.5, -8.75, -2, 0.5, -8.75, -3.75, 0.5, -8.75, -8, 0.5, -7.75, -7.75, 0.5, 9.25, 8, 0.5, 9.25, 8, 0.5, 8, -8, 0.5, 8, -7.75, 0.5, 9.25, 8, 0.5, 8, 9, 0.5, -2, 2.25, 0.5, -8.75, -8, 0.5, -7.75)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(4, 3, 5), PackedInt32Array(5, 3, 6), PackedInt32Array(8, 7, 9), PackedInt32Array(9, 7, 10), PackedInt32Array(12, 11, 13), PackedInt32Array(13, 11, 14), PackedInt32Array(18, 17, 15), PackedInt32Array(15, 17, 16), PackedInt32Array(21, 20, 19), PackedInt32Array(24, 23, 22), PackedInt32Array(27, 26, 25), PackedInt32Array(29, 28, 30), PackedInt32Array(30, 28, 31), PackedInt32Array(34, 33, 32), PackedInt32Array(37, 36, 35), PackedInt32Array(39, 38, 40), PackedInt32Array(40, 38, 41), PackedInt32Array(41, 38, 42), PackedInt32Array(42, 38, 43)]
+
+[node name="LShape" type="Node3D" node_paths=PackedStringArray("EnemySpawns")]
+script = ExtResource("1_wvs4y")
+EnemySpawns = []
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_gidps")
+
+[node name="NavigationLink3D" type="NavigationLink3D" parent="NavigationRegion3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -9)
+end_position = Vector3(2, 0, 0)
+
+[node name="NavigationLink3D2" type="NavigationLink3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, 9, 0, 0)
+end_position = Vector3(2, 0, 0)
+
+[node name="RoomBaseDoor" type="MeshInstance3D" parent="NavigationRegion3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+mesh = ExtResource("2_lpbll")
+skeleton = NodePath("../..")
+
+[node name="RoomBaseDoor2" type="MeshInstance3D" parent="NavigationRegion3D"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+mesh = ExtResource("2_lpbll")
+skeleton = NodePath("../..")
+
+[node name="RoomBasePillars" type="MeshInstance3D" parent="NavigationRegion3D"]
+mesh = ExtResource("3_hhatx")
+skeleton = NodePath("../..")
+
+[node name="RoomBasePlane" type="MeshInstance3D" parent="NavigationRegion3D"]
+material_override = ExtResource("4_iyoep")
+mesh = ExtResource("5_ckcwk")
+skeleton = NodePath("../..")
+
+[node name="RoomBaseRoof" type="MeshInstance3D" parent="NavigationRegion3D"]
+mesh = ExtResource("6_c7rb5")
+skeleton = NodePath("../..")
+
+[node name="RoomBaseWall" type="MeshInstance3D" parent="NavigationRegion3D"]
+mesh = ExtResource("7_dpyvl")
+skeleton = NodePath("../..")
+
+[node name="RoomBaseWall2" type="MeshInstance3D" parent="NavigationRegion3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+mesh = ExtResource("7_dpyvl")
+skeleton = NodePath("../..")

@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctm1q4050pwtv"]
+
+[ext_resource type="Script" path="res://Scripts/UI/PlayerUI.cs" id="1_2ddog"]
+[ext_resource type="PackedScene" uid="uid://cwlb1yx71f0ys" path="res://Prefabs/UI/Actions/hotbar_container.tscn" id="3_1p7ao"]
+
+[node name="PlayerUI" type="Control" node_paths=PackedStringArray("Bars")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_2ddog")
+Bars = [NodePath("HotbarContainer"), NodePath("HotbarContainer2")]
+
+[node name="HotbarContainer" parent="." instance=ExtResource("3_1p7ao")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HotbarContainer2" parent="." instance=ExtResource("3_1p7ao")]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+ColumnCount = 1

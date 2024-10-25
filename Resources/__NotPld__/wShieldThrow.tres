@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="CombatAction" load_steps=7 format=3 uid="uid://cg1ub46mnh8mc"]
+
+[ext_resource type="Script" path="res://Scripts/Commands/CombatAction.cs" id="1_k4dvy"]
+[ext_resource type="Script" path="res://Scripts/Strategies/ApplicationStrats/ApplyDamage.cs" id="1_kfk8p"]
+[ext_resource type="Texture2D" uid="uid://dyl8u5hd6olbf" path="res://Art/Environment/BricksHeightMap.png" id="2_c5wq2"]
+[ext_resource type="Script" path="res://Scripts/Strategies/TargetStrat/CurrentTarget.cs" id="3_dh4b1"]
+
+[sub_resource type="Resource" id="Resource_w1w4c"]
+script = ExtResource("1_kfk8p")
+Potency = 100
+
+[sub_resource type="Resource" id="Resource_jw1fg"]
+script = ExtResource("3_dh4b1")
+MaxRange = 20.0
+
+[resource]
+script = ExtResource("1_k4dvy")
+ComboAction = ""
+Targeting = SubResource("Resource_jw1fg")
+VFXs = null
+Applications = Array[Object]([SubResource("Resource_w1w4c")])
+ComboApplications = null
+Name = ""
+OnGcd = true
+Cd = 1.0
+Icon = ExtResource("2_c5wq2")

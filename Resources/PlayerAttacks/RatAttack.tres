@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="CombatAction" load_steps=8 format=3 uid="uid://dh1cqq0smifh2"]
+
+[ext_resource type="Script" path="res://Scripts/Strategies/ApplicationStrats/ApplyDamage.cs" id="1_kyrm7"]
+[ext_resource type="Script" path="res://Scripts/Strategies/TargetStrat/CurrentTarget.cs" id="2_xthr1"]
+[ext_resource type="Script" path="res://Scripts/Strategies/VfxStrat/PlayAttackAnimation.cs" id="3_vc6sf"]
+[ext_resource type="Script" path="res://Scripts/Commands/CombatAction.cs" id="4_087br"]
+
+[sub_resource type="Resource" id="Resource_kcf34"]
+script = ExtResource("1_kyrm7")
+Potency = 100
+
+[sub_resource type="Resource" id="Resource_b4xba"]
+script = ExtResource("2_xthr1")
+MaxRange = 2.0
+
+[sub_resource type="Resource" id="Resource_6cjds"]
+script = ExtResource("3_vc6sf")
+Anim = "Attack"
+Priority = 2
+
+[resource]
+script = ExtResource("4_087br")
+ComboAction = ""
+Targeting = SubResource("Resource_b4xba")
+VFXs = Array[Object]([SubResource("Resource_6cjds")])
+Applications = Array[Object]([SubResource("Resource_kcf34")])
+ComboApplications = null
+Name = ""
+OnGcd = true
+Cd = 1.0

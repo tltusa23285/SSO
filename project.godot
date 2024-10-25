@@ -1,0 +1,56 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Godot3D"
+run/main_scene="res://Scenes/GameScenes/game.tscn"
+config/features=PackedStringArray("4.2", "C#", "Forward Plus")
+config/icon="res://icon.svg"
+
+[autoload]
+
+KeyMap="*res://Scripts/InputManagement/KeyMap.cs"
+HotbarMap="*res://Scripts/InputManagement/HotBars/HotbarMap.cs"
+
+[debug_draw_3d]
+
+settings/updates/check_for_updates=false
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
+
+[dotnet]
+
+project/assembly_name="Godot3D"
+
+[editor_plugins]
+
+enabled=PackedStringArray()
+
+[file_customization]
+
+folder_colors={
+"res://Art/": "purple",
+"res://Prefabs/": "yellow",
+"res://Resources/": "red",
+"res://Scenes/": "blue",
+"res://Scripts/": "teal"
+}
+
+[layer_names]
+
+3d_physics/layer_1="World"
+3d_physics/layer_2="Player"
+3d_physics/layer_3="Enemy"

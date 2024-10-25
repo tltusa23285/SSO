@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="CombatAction" load_steps=6 format=3 uid="uid://2qlupbhp54yp"]
+
+[ext_resource type="Script" path="res://Scripts/Strategies/ApplicationStrats/ApplyDamage.cs" id="1_bhaol"]
+[ext_resource type="Texture2D" uid="uid://7a6yjdn6gvaf" path="res://Art/UI/Shoot.png" id="2_kvm2b"]
+[ext_resource type="Resource" uid="uid://bexn6pnfexwqt" path="res://Resources/Common/TargetStrats/CurrentTarget_Range2.tres" id="3_2apvh"]
+[ext_resource type="Script" path="res://Scripts/Commands/CombatAction.cs" id="4_jkn0s"]
+
+[sub_resource type="Resource" id="Resource_hd7s4"]
+script = ExtResource("1_bhaol")
+Potency = 150
+
+[resource]
+script = ExtResource("4_jkn0s")
+ComboAction = ""
+Targeting = ExtResource("3_2apvh")
+VFXs = null
+Applications = Array[Object]([SubResource("Resource_hd7s4")])
+ComboApplications = null
+Name = "Fast Blade"
+OnGcd = true
+Cd = 1.0
+Icon = ExtResource("2_kvm2b")

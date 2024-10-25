@@ -1,0 +1,98 @@
+[gd_scene load_steps=12 format=3 uid="uid://d2ovd10is7ytl"]
+
+[ext_resource type="Script" path="res://Scripts/Actor/ActorGraphicController.cs" id="1_h3hrv"]
+[ext_resource type="Script" path="res://Scripts/MiscComponents/Health.cs" id="2_25qg2"]
+[ext_resource type="Script" path="res://Scripts/DataStructures/ActorStatBlock.cs" id="2_ni6rs"]
+[ext_resource type="Script" path="res://Scripts/Actor/Actor.cs" id="2_ub61b"]
+[ext_resource type="Resource" uid="uid://cjevp1u5fwc7o" path="res://Resources/RatBook.tres" id="2_yitjp"]
+[ext_resource type="Script" path="res://Scripts/TempEffects/TemporaryEffectContainer.cs" id="4_ydnc8"]
+[ext_resource type="Script" path="res://Scripts/Actor/Enemy/EnemyController.cs" id="5_p3q5l"]
+[ext_resource type="Script" path="res://Scripts/MiscComponents/HealthBar.cs" id="7_4incg"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_feak1"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ensnm"]
+radius = 5.0
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_mfw4f"]
+viewport_path = NodePath("TransformBreak/Graphic/SubViewport")
+
+[node name="Enemy" type="CharacterBody3D" node_paths=PackedStringArray("Stats", "TempEffects", "Health", "GCon")]
+collision_layer = 4
+script = ExtResource("2_ub61b")
+Stats = NodePath("Stats")
+ActionBook = ExtResource("2_yitjp")
+TempEffects = NodePath("TempEffectContainer")
+Health = NodePath("Health")
+GCon = NodePath("TransformBreak/Graphic")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_feak1")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_desired_distance = 2.0
+avoidance_enabled = true
+use_3d_avoidance = true
+debug_enabled = true
+
+[node name="Stats" type="Node" parent="."]
+script = ExtResource("2_ni6rs")
+Category = 1
+
+[node name="TempEffectContainer" type="Node" parent="."]
+script = ExtResource("4_ydnc8")
+
+[node name="EnemyController" type="Node" parent="." node_paths=PackedStringArray("AggroArea", "Agent", "C_Actor")]
+script = ExtResource("5_p3q5l")
+AggroArea = NodePath("../AggroArea")
+Agent = NodePath("../NavigationAgent3D")
+C_Actor = NodePath("..")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("2_25qg2")
+MaxHealth = 100
+
+[node name="AggroArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AggroArea"]
+shape = SubResource("CylinderShape3D_ensnm")
+
+[node name="TransformBreak" type="Node" parent="."]
+
+[node name="Graphic" type="Node3D" parent="TransformBreak"]
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 0, 0, 0)
+script = ExtResource("1_h3hrv")
+AnimPath = ""
+Runanim = "Walk"
+IdleAnim = "Idle"
+
+[node name="SubViewport" type="SubViewport" parent="TransformBreak/Graphic"]
+transparent_bg = true
+size = Vector2i(256, 32)
+
+[node name="ProgressBar" type="ProgressBar" parent="TransformBreak/Graphic/SubViewport" node_paths=PackedStringArray("Label")]
+offset_right = 256.0
+offset_bottom = 32.0
+max_value = 1.0
+show_percentage = false
+script = ExtResource("7_4incg")
+Label = NodePath("Label")
+
+[node name="Label" type="Label" parent="TransformBreak/Graphic/SubViewport/ProgressBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite3D" type="Sprite3D" parent="TransformBreak/Graphic"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.89312, 0)
+texture = SubResource("ViewportTexture_mfw4f")
+
+[connection signal="HealthChange" from="Health" to="TransformBreak/Graphic/SubViewport/ProgressBar" method="SetBar"]

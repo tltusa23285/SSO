@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://dgx02m1nu3cbg"]
+
+[ext_resource type="Script" path="res://Scripts/UI/KeyBindUI/KeyBindPanel.cs" id="1_3fnwj"]
+[ext_resource type="PackedScene" uid="uid://dg4wdsr7s0afx" path="res://Prefabs/UI/menu_panel.tscn" id="1_i8pnw"]
+[ext_resource type="PackedScene" uid="uid://bwppqwftptbfj" path="res://Prefabs/UI/KeyBinds/key_bind_line.tscn" id="2_8p86k"]
+
+[node name="MenuPanel" node_paths=PackedStringArray("GroupParent", "GroupPrefab") instance=ExtResource("1_i8pnw")]
+offset_right = -19.0
+offset_bottom = 87.0
+script = ExtResource("1_3fnwj")
+GroupParent = NodePath("MarginContainer/Bindings/TabContainer")
+GroupPrefab = NodePath("MarginContainer/Bindings/ScrollContainer")
+LinePrefab = ExtResource("2_8p86k")
+
+[node name="Label" parent="." index="1"]
+text = "Key Binding"
+
+[node name="Bindings" type="MarginContainer" parent="MarginContainer" index="1"]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/Bindings" index="0"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="LineParent" type="VBoxContainer" parent="MarginContainer/Bindings/ScrollContainer" index="0"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="TabContainer" type="TabContainer" parent="MarginContainer/Bindings" index="1"]
+layout_mode = 2
+theme_override_constants/side_margin = 0

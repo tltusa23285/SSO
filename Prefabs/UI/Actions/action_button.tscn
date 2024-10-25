@@ -1,0 +1,130 @@
+[gd_scene load_steps=7 format=3 uid="uid://dtc0gorul7k30"]
+
+[ext_resource type="Script" path="res://Scripts/UI/Actions/ActionButton.cs" id="1_ght8n"]
+[ext_resource type="Texture2D" uid="uid://dor111nssjtte" path="res://Art/UI/ActionMask.png" id="2_mb66r"]
+[ext_resource type="Texture2D" uid="uid://clmudc1hw68h" path="res://Art/UI/ActionPressed.png" id="3_0io5o"]
+[ext_resource type="Texture2D" uid="uid://5bol7pvuvv2f" path="res://Art/UI/ActionBorder.png" id="4_ft15q"]
+
+[sub_resource type="Gradient" id="Gradient_tcmcs"]
+offsets = PackedFloat32Array(0, 0.272206, 0.747851, 1)
+colors = PackedColorArray(0.796875, 0.736151, 0.090271, 1, 0.796487, 0.736689, 0.0902345, 0.512894, 0.796091, 0.737237, 0.0901973, 0.0161541, 0.796078, 0.737255, 0.0901961, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_e8ovb"]
+gradient = SubResource("Gradient_tcmcs")
+width = 16
+
+[node name="ActionButton" type="Button" node_paths=PackedStringArray("IconRect", "PressedRect", "FlagRect", "Key", "Timer", "CdTime", "CDFill")]
+custom_minimum_size = Vector2(64, 64)
+offset_right = 32.0
+offset_bottom = 32.0
+focus_mode = 0
+flat = true
+script = ExtResource("1_ght8n")
+IconRect = NodePath("Mask/Icon")
+PressedRect = NodePath("Mask/HL")
+FlagRect = NodePath("Mask/ComboFlag")
+Key = NodePath("Mask/MarginContainer/Key")
+Timer = NodePath("Timer")
+CdTime = NodePath("Mask/TextureProgressBar/CdTimer")
+CDFill = NodePath("Mask/TextureProgressBar")
+
+[node name="Mask" type="TextureRect" parent="."]
+clip_children = 1
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_mb66r")
+
+[node name="BG" type="ColorRect" parent="Mask"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.192157, 0.192157, 0.192157, 0.819608)
+
+[node name="Icon" type="TextureRect" parent="Mask"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(45, 20)
+expand_mode = 1
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Mask"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 1.0
+step = 0.01
+fill_mode = 5
+nine_patch_stretch = true
+texture_progress = ExtResource("2_mb66r")
+tint_progress = Color(0, 0, 0, 0.611765)
+
+[node name="CdTimer" type="Label" parent="Mask/TextureProgressBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 35
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HL" type="TextureRect" parent="Mask"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_0io5o")
+
+[node name="ComboFlag" type="TextureRect" parent="Mask"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -1.5708
+pivot_offset = Vector2(32, 32)
+texture = SubResource("GradientTexture1D_e8ovb")
+
+[node name="Border" type="TextureRect" parent="Mask"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_ft15q")
+
+[node name="MarginContainer" type="MarginContainer" parent="Mask"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+
+[node name="Key" type="Label" parent="Mask/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+
+[node name="Timer" type="Timer" parent="."]

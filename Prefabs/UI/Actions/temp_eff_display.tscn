@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=3 uid="uid://bc7usc6ewn5tv"]
+
+[ext_resource type="Script" path="res://Scripts/UI/TempEffDisplay.cs" id="1_8i4lv"]
+[ext_resource type="Texture2D" uid="uid://dor111nssjtte" path="res://Art/UI/ActionMask.png" id="2_fnx5j"]
+
+[node name="TempEffDisplay" type="Control" node_paths=PackedStringArray("IconRect", "Time")]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 32.0
+offset_bottom = 32.0
+script = ExtResource("1_8i4lv")
+IconRect = NodePath("Mask/Icon")
+Time = NodePath("Mask/Timer")
+
+[node name="Mask" type="TextureRect" parent="."]
+clip_children = 1
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_fnx5j")
+
+[node name="Icon" type="TextureRect" parent="Mask"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(45, 20)
+expand_mode = 1
+
+[node name="Timer" type="Label" parent="Mask"]
+layout_mode = 0
+offset_right = 59.0
+offset_bottom = 64.0
+size_flags_vertical = 1
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Timer" type="Timer" parent="."]

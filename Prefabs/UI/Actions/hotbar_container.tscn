@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwlb1yx71f0ys"]
+
+[ext_resource type="Script" path="res://Scripts/UI/Actions/HotbarContainer.cs" id="1_apwls"]
+[ext_resource type="PackedScene" uid="uid://dtc0gorul7k30" path="res://Prefabs/UI/Actions/action_button.tscn" id="2_jb3r4"]
+
+[node name="PanelContainer" type="PanelContainer" node_paths=PackedStringArray("Parent")]
+script = ExtResource("1_apwls")
+Parent = NodePath("MarginContainer/HotbarContainer")
+ActionButtonPrefab = ExtResource("2_jb3r4")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+color = Color(0.340339, 0.340339, 0.340339, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HotbarContainer" type="GridContainer" parent="MarginContainer"]
+layout_mode = 2
+columns = 12

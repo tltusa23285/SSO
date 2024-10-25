@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ActionBook" load_steps=3 format=3 uid="uid://cjevp1u5fwc7o"]
+
+[ext_resource type="Resource" uid="uid://dh1cqq0smifh2" path="res://Resources/PlayerAttacks/RatAttack.tres" id="1_f8g0f"]
+[ext_resource type="Script" path="res://Scripts/DataStructures/ActionBook.cs" id="1_q8dbr"]
+
+[resource]
+script = ExtResource("1_q8dbr")
+DefaultAttack = ExtResource("1_f8g0f")
+Commands = null

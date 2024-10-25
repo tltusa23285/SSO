@@ -1,0 +1,54 @@
+[gd_resource type="Resource" script_class="CombatAction" load_steps=14 format=3 uid="uid://c3nwp52yiew2p"]
+
+[ext_resource type="Script" path="res://Scripts/Strategies/ApplicationStrats/ApplyDamage.cs" id="1_gug75"]
+[ext_resource type="Script" path="res://Scripts/TempEffects/TempEffectScripts/StatBuffData.cs" id="2_6prya"]
+[ext_resource type="Texture2D" uid="uid://kaolv6hntukv" path="res://icon.svg" id="2_sxspm"]
+[ext_resource type="Texture2D" uid="uid://7a6yjdn6gvaf" path="res://Art/UI/Shoot.png" id="2_yq1ef"]
+[ext_resource type="Script" path="res://Scripts/Strategies/TargetStrat/CurrentTarget.cs" id="2_yxra0"]
+[ext_resource type="Script" path="res://Scripts/Strategies/ApplicationStrats/ApplyTemporaryEffect.cs" id="3_3sawf"]
+[ext_resource type="Script" path="res://Scripts/Strategies/VfxStrat/PlayAttackAnimation.cs" id="3_afnco"]
+[ext_resource type="Script" path="res://Scripts/Commands/CombatAction.cs" id="4_1e8at"]
+
+[sub_resource type="Resource" id="Resource_kcf34"]
+script = ExtResource("1_gug75")
+Potency = 300
+
+[sub_resource type="Resource" id="Resource_1gp3n"]
+script = ExtResource("2_6prya")
+StatToMod = "Str"
+ModType = 0
+ModValue = 0
+EffectId = "StrBuff"
+DisplayName = ""
+FlavorText = ""
+Icon = ExtResource("2_sxspm")
+Type = 0
+Visibility = 0
+Removable = true
+InitialDuration = 10
+MaxDuration = 10
+TimeAddedOnRefresh = 999
+
+[sub_resource type="Resource" id="Resource_347no"]
+script = ExtResource("3_3sawf")
+ApplyTo = 1
+Effect = SubResource("Resource_1gp3n")
+
+[sub_resource type="Resource" id="Resource_b4xba"]
+script = ExtResource("2_yxra0")
+MaxRange = 2.0
+
+[sub_resource type="Resource" id="Resource_qkic8"]
+script = ExtResource("3_afnco")
+Anim = "Attack_Strong"
+Priority = 2
+
+[resource]
+script = ExtResource("4_1e8at")
+Targeting = SubResource("Resource_b4xba")
+Applications = Array[Object]([SubResource("Resource_kcf34"), SubResource("Resource_347no")])
+VFXs = Array[Resource]([SubResource("Resource_qkic8")])
+Name = "Big Single"
+OnGcd = false
+Cd = 5.0
+Icon = ExtResource("2_yq1ef")

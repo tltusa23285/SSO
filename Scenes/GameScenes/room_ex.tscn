@@ -1,0 +1,73 @@
+[gd_scene load_steps=14 format=3 uid="uid://ci8iexv04scff"]
+
+[ext_resource type="Script" path="res://Scripts/Dungeon/RunManager.cs" id="1_tg8k3"]
+[ext_resource type="Script" path="res://Scripts/Dungeon/DungeonGenerator.cs" id="1_xemna"]
+[ext_resource type="Resource" uid="uid://de0kntlbsqltb" path="res://Scripts/Dungeon/Rooms.tres" id="2_l4230"]
+[ext_resource type="Material" uid="uid://cnxk3fvcn588b" path="res://Art/testShadMat.tres" id="4_0gnb8"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_rik06"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bd86a"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_mtti2"]
+sky_material = SubResource("ProceduralSkyMaterial_bd86a")
+
+[sub_resource type="Environment" id="Environment_xu32j"]
+background_mode = 2
+sky = SubResource("Sky_mtti2")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_7mhtn"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_vglny"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_2xxy7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3ox48"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_shy26"]
+
+[node name="Node" type="Node" node_paths=PackedStringArray("Generator")]
+script = ExtResource("1_tg8k3")
+Generator = NodePath("RoomEX")
+
+[node name="RoomEX" type="Node3D" parent="." node_paths=PackedStringArray("StartMarker", "EndMarker", "GenMarker")]
+script = ExtResource("1_xemna")
+Size = Vector2i(5, 5)
+CellSize = 20.0
+StartMarker = NodePath("Start")
+EndMarker = NodePath("End")
+GenMarker = NodePath("Gen")
+RoomFactory = ExtResource("2_l4230")
+
+[node name="Area3D" type="StaticBody3D" parent="RoomEX"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RoomEX/Area3D"]
+shape = SubResource("WorldBoundaryShape3D_rik06")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="RoomEX"]
+environment = SubResource("Environment_xu32j")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="RoomEX"]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 4.73018, 0)
+shadow_enabled = true
+
+[node name="Start" type="MeshInstance3D" parent="RoomEX"]
+mesh = SubResource("BoxMesh_7mhtn")
+
+[node name="Start2" type="MeshInstance3D" parent="RoomEX"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.55248)
+material_override = ExtResource("4_0gnb8")
+mesh = SubResource("SphereMesh_vglny")
+
+[node name="End" type="MeshInstance3D" parent="RoomEX"]
+mesh = SubResource("SphereMesh_2xxy7")
+
+[node name="Gen" type="MeshInstance3D" parent="RoomEX"]
+transform = Transform3D(1.7, 0, 0, 0, 1.7, 0, 0, 0, 1.7, 0, 6, 2.5)
+material_override = SubResource("StandardMaterial3D_3ox48")
+mesh = SubResource("PrismMesh_shy26")

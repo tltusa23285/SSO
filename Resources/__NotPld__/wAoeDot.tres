@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CombatAction" load_steps=2 format=3 uid="uid://chc7h55ew7f1g"]
+
+[ext_resource type="Script" path="res://Scripts/Commands/CombatAction.cs" id="1_dsmhk"]
+
+[resource]
+script = ExtResource("1_dsmhk")
+Applications = null
+VFXs = null
+Name = ""
+OnGcd = true
+Cd = 1.0

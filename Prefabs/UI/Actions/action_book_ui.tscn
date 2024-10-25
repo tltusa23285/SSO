@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjl6iiaesa4dg"]
+
+[ext_resource type="PackedScene" uid="uid://dg4wdsr7s0afx" path="res://Prefabs/UI/menu_panel.tscn" id="1_4ja0d"]
+[ext_resource type="Script" path="res://Scripts/UI/Actions/ActionBookUI.cs" id="1_8dwib"]
+[ext_resource type="PackedScene" uid="uid://dtc0gorul7k30" path="res://Prefabs/UI/Actions/action_button.tscn" id="2_gjuyg"]
+
+[node name="ActionBookPanel" node_paths=PackedStringArray("Parent") instance=ExtResource("1_4ja0d")]
+script = ExtResource("1_8dwib")
+Parent = NodePath("MarginContainer/MarginContainer/ActionBookContainer")
+ActionButtonPrefab = ExtResource("2_gjuyg")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer" index="1"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="ActionBookContainer" type="FlowContainer" parent="MarginContainer/MarginContainer" index="0"]
+layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10

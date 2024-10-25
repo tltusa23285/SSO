@@ -1,0 +1,62 @@
+[gd_scene load_steps=8 format=3 uid="uid://1qnh3dotdexh"]
+
+[ext_resource type="Material" uid="uid://crru5dpiq7rp3" path="res://Art/ground.tres" id="1_vmrkr"]
+[ext_resource type="PackedScene" uid="uid://cpn1i8vtvvyih" path="res://Scripts/Tools/ManualSpawn/ManualEnemySpawner.tscn" id="2_v3og2"]
+[ext_resource type="PackedScene" uid="uid://jichko647vfv" path="res://Scripts/Tools/ManualSpawn/ManualPlayerSpawner.tscn" id="3_1xxym"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ax2tf"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_e71hy"]
+sky_material = SubResource("ProceduralSkyMaterial_ax2tf")
+
+[sub_resource type="Environment" id="Environment_ivhuk"]
+background_mode = 2
+sky = SubResource("Sky_e71hy")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_lbyea"]
+vertices = PackedVector3Array(-19.6454, 6, -41.626, -17.6454, 6, -41.876, -17.8954, 6, -43.126, -21.3954, 6, -43.126, -21.3954, 6, -23.626, -19.3954, 6, -23.626, -19.6454, 6, -41.626, -21.3954, 6, -43.126, -17.6454, 6, -41.876, 17.6046, 6, -41.876, 17.8546, 6, -43.126, -17.8954, 6, -43.126, 17.8546, 6, -43.126, 17.6046, 6, -41.876, 19.6046, 6, -41.626, 21.3546, 6, -43.126, 19.6046, 6, -41.626, 19.3546, 6, -23.626, 21.3546, 6, -23.626, 21.3546, 6, -43.126, -8.6454, 3, -24.626, -8.3954, 3, -40.876, -18.6454, 3, -40.876, -18.6454, 3, -24.626, -6.8954, 3, -24.376, -6.8954, 0.3, -19.126, -1.8954, 0.3, -19.126, -1.8954, 3, -24.376, -6.8954, 1, -20.4385, -1.8954, 1, -20.4385, -1.8954, 3, -24.376, -0.145399, 3, -24.626, -0.395399, 3, -40.876, -8.3954, 3, -40.876, -8.6454, 3, -24.626, -6.8954, 3, -24.376, -0.145399, 3, -24.626, 18.6046, 3, -24.626, 18.6046, 3, -40.876, -0.395399, 3, -40.876, -21.3954, 6, -16.376, -18.6454, 6, -16.126, -18.3954, 6, -17.876, -19.3954, 6, -23.626, -21.3954, 6, -23.626, -18.3954, 6, -17.876, -7.8954, 6, -17.876, -7.8954, 6, -23.626, -19.3954, 6, -23.626, 18.3546, 6, -17.876, 18.6046, 6, -16.126, 21.3546, 6, -16.376, 21.3546, 6, -23.626, 19.3546, 6, -23.626, -0.895399, 6, -23.626, -0.895399, 6, -17.876, 18.3546, 6, -17.876, 19.3546, 6, -23.626, -1.8954, -0.7, -17.126, -1.8954, 0.3, -19.126, -6.8954, 0.3, -19.126, -7.1454, -0.7, -16.876, -1.8954, -0.5, -18.126, -7.0204, -0.5, -18.001, -7.1454, -0.7, -16.876, -17.6454, -0.7, -16.876, -17.6454, -0.7, 6.124, 0.354601, -0.7, 6.124, 0.354601, -0.7, -16.876, -1.8954, -0.7, -17.126, -7.1454, -0.7, -16.876, 0.354601, -0.7, 6.124, 0.354601, -0.7, 6.124, 17.6046, -0.7, 6.124, 17.6046, -0.7, -16.876, 0.354601, -0.7, -16.876, 0.104601, 6, 7.624, 0.104601, 6, 7.124, -18.6454, 6, 6.874, -21.3954, 6, 7.624, -18.6454, 6, 6.874, -18.6454, 6, -16.126, -21.3954, 6, -16.376, -21.3954, 6, 7.624, 18.6046, 6, 6.874, 0.104601, 6, 7.124, 0.104601, 6, 7.624, 21.3546, 6, 7.624, 18.6046, 6, 6.874, 21.3546, 6, 7.624, 21.3546, 6, -16.376, 18.6046, 6, -16.126)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(8, 11, 9), PackedInt32Array(9, 11, 10), PackedInt32Array(13, 12, 14), PackedInt32Array(14, 12, 15), PackedInt32Array(17, 16, 18), PackedInt32Array(18, 16, 19), PackedInt32Array(23, 22, 20), PackedInt32Array(20, 22, 21), PackedInt32Array(25, 28, 26), PackedInt32Array(26, 28, 29), PackedInt32Array(29, 28, 24), PackedInt32Array(29, 24, 27), PackedInt32Array(35, 34, 30), PackedInt32Array(30, 34, 31), PackedInt32Array(31, 34, 33), PackedInt32Array(31, 33, 32), PackedInt32Array(37, 36, 38), PackedInt32Array(38, 36, 39), PackedInt32Array(41, 40, 42), PackedInt32Array(42, 40, 43), PackedInt32Array(43, 40, 44), PackedInt32Array(46, 45, 47), PackedInt32Array(47, 45, 48), PackedInt32Array(50, 49, 51), PackedInt32Array(51, 49, 53), PackedInt32Array(51, 53, 52), PackedInt32Array(55, 54, 56), PackedInt32Array(56, 54, 57), PackedInt32Array(59, 62, 60), PackedInt32Array(60, 62, 63), PackedInt32Array(63, 62, 58), PackedInt32Array(63, 58, 61), PackedInt32Array(65, 64, 66), PackedInt32Array(66, 64, 67), PackedInt32Array(69, 68, 70), PackedInt32Array(70, 68, 71), PackedInt32Array(75, 74, 72), PackedInt32Array(72, 74, 73), PackedInt32Array(77, 76, 78), PackedInt32Array(78, 76, 79), PackedInt32Array(81, 80, 82), PackedInt32Array(82, 80, 83), PackedInt32Array(85, 84, 86), PackedInt32Array(86, 84, 87), PackedInt32Array(91, 90, 88), PackedInt32Array(88, 90, 89)]
+
+[node name="Game" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ivhuk")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.223675, 0, 0)
+navigation_mesh = SubResource("NavigationMesh_lbyea")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.93939, -17.813)
+material_override = ExtResource("1_vmrkr")
+use_collision = true
+size = Vector3(43.7908, 7.87878, 51.626)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 2.2573, 0, 0, 0, 1, 0, 1.68814, 12.5476)
+operation = 2
+size = Vector3(36.553, 4, 24.25)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="NavigationRegion3D/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 2.2573, 0, 0, 0, 1, 0, 5.47205, -14.9676)
+operation = 2
+size = Vector3(38.5039, 4, 17.5284)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="NavigationRegion3D/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 0.866025, -3.73687, 0, 0.5, 6.47245, -4.34899, 3.62745, -4.8115)
+operation = 2
+size = Vector3(6.15527, 6.20062, 2.07764)
+
+[node name="ManualPlayerSpawner" parent="." instance=ExtResource("3_1xxym")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.242057, -0.887072, 0.838669)
+
+[node name="ManualEnemySpawner" parent="." instance=ExtResource("2_v3og2")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.502452, 0.955677, -6.95302)

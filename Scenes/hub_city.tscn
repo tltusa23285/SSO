@@ -1,0 +1,62 @@
+[gd_scene load_steps=8 format=3 uid="uid://c0l7uuquprvby"]
+
+[ext_resource type="Material" uid="uid://crru5dpiq7rp3" path="res://Art/ground.tres" id="1_5hn1q"]
+[ext_resource type="Material" uid="uid://cyshnogkkfoux" path="res://Art/wall.tres" id="2_qg6yu"]
+[ext_resource type="PackedScene" uid="uid://dxenlg0xccade" path="res://Prefabs/Actors/Player/player_rig.tscn" id="3_i44jh"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_0ojqg"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_llo0g"]
+subdivide_width = 1
+subdivide_height = 1
+subdivide_depth = 1
+
+[sub_resource type="PrismMesh" id="PrismMesh_ghl26"]
+left_to_right = 0.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_cgl6g"]
+
+[node name="HubCity" type="Node3D"]
+
+[node name="GroundPlane" type="MeshInstance3D" parent="."]
+transform = Transform3D(38.115, 0, 0, 0, 1, 0, 0, 0, 38.115, 0, 0, 14)
+material_override = ExtResource("1_5hn1q")
+mesh = SubResource("PlaneMesh_0ojqg")
+
+[node name="DungeonStairs" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="DungeonStairs"]
+transform = Transform3D(1, 0, 0, 0, 4.95, 0, 0, 0, 1, -2.5, 2.5, 0)
+mesh = SubResource("BoxMesh_llo0g")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="DungeonStairs"]
+transform = Transform3D(1, 0, 0, 0, 4.95, 0, 0, 0, 1, 2.5, 2.5, 0)
+mesh = SubResource("BoxMesh_llo0g")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="DungeonStairs"]
+transform = Transform3D(-4.37114e-08, -6.435, 0, 1, -2.81283e-07, 0, 0, 0, 1, 0, 5, 0)
+mesh = SubResource("BoxMesh_llo0g")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="DungeonStairs"]
+transform = Transform3D(1.04002e-14, 4.86057e-07, -5.76, 5.4432, -4.86056e-07, -8.94494e-22, -2.3793e-07, -11.1197, -2.51778e-07, 0, 2.5, -6)
+mesh = SubResource("PrismMesh_ghl26")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="DungeonStairs"]
+transform = Transform3D(1.02962e-14, 4.2773e-07, -5.0688, 5.38877, -4.2773e-07, -7.87155e-22, -2.35551e-07, -9.78532, -2.21564e-07, 0, 2.5, -5)
+material_override = ExtResource("2_qg6yu")
+mesh = SubResource("PrismMesh_ghl26")
+
+[node name="PlayerBody" parent="." instance=ExtResource("3_i44jh")]
+
+[node name="Buildings" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Buildings"]
+transform = Transform3D(4.88303, 0, 4.23503, 0, 3.564, 0, -4.88303, 0, 4.23503, 9.20301, 1.5, -3.16956)
+mesh = SubResource("BoxMesh_cgl6g")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Buildings"]
+transform = Transform3D(1.22262, 0, 1.22579, 0, 5.7024, 0, -1.22262, 0, 1.22579, -0.0696083, 1.5, 9.78044)
+mesh = SubResource("BoxMesh_cgl6g")
+skeleton = NodePath("../..")

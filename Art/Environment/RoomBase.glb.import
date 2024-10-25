@@ -1,0 +1,100 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://dkduybs0qk1vx"
+path="res://.godot/imported/RoomBase.glb-89a279cc5b7c5f6ad4af400f3efe3325.scn"
+
+[deps]
+
+source_file="res://Art/Environment/RoomBase.glb"
+dest_files=["res://.godot/imported/RoomBase.glb-89a279cc5b7c5f6ad4af400f3efe3325.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=false
+animation/import=false
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+import_script/path=""
+_subresources={
+"materials": {
+"@MATERIAL:1": {
+"use_external/path": "res://Art/ground.tres"
+},
+"@MATERIAL:2": {
+"use_external/enabled": true,
+"use_external/path": "res://Art/Environment/RoomFloor.tres"
+},
+"UVSample": {
+"use_external/enabled": true,
+"use_external/path": "res://Art/Environment/RoomFloor.tres"
+}
+},
+"meshes": {
+"RoomBase_Door": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://Art/Environment/RoomBase_Door.res"
+},
+"RoomBase_Pillars": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://Art/Environment/RoomBase_Pillars.res"
+},
+"RoomBase_Plane": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://Art/Environment/RoomBase_Plane.res"
+},
+"RoomBase_Roof": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://Art/Environment/RoomBase_Roof.res"
+},
+"RoomBase_Wall": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": false,
+"save_to_file/path": "res://Art/Environment/RoomBase_Wall.res"
+}
+}
+}
+gltf/naming_version=1
+gltf/embedded_image_handling=0

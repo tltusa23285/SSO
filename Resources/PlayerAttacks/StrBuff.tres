@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="CombatAction" load_steps=9 format=3 uid="uid://exsbiasjlnlt"]
+
+[ext_resource type="Texture2D" uid="uid://kaolv6hntukv" path="res://icon.svg" id="1_nvt36"]
+[ext_resource type="Script" path="res://Scripts/Strategies/ApplicationStrats/ApplyTemporaryEffect.cs" id="2_0ktfc"]
+[ext_resource type="Script" path="res://Scripts/TempEffects/TempEffectScripts/StatBuffData.cs" id="2_3a04e"]
+[ext_resource type="Script" path="res://Scripts/Strategies/TargetStrat/SelfTarget.cs" id="4_1rl0g"]
+[ext_resource type="Script" path="res://Scripts/Commands/CombatAction.cs" id="5_n0ubv"]
+
+[sub_resource type="Resource" id="Resource_nluwv"]
+script = ExtResource("2_3a04e")
+StatToMod = "Str"
+ModType = 0
+EffectId = "StrBuff"
+DisplayName = ""
+FlavorText = ""
+Icon = ExtResource("1_nvt36")
+Type = 0
+Visibility = 0
+Removable = true
+InitialDuration = 10
+MaxDuration = 10
+TimeAddedOnRefresh = 999
+
+[sub_resource type="Resource" id="Resource_4bxtu"]
+script = ExtResource("2_0ktfc")
+Effect = SubResource("Resource_nluwv")
+
+[sub_resource type="Resource" id="Resource_nturt"]
+script = ExtResource("4_1rl0g")
+
+[resource]
+script = ExtResource("5_n0ubv")
+Targeting = SubResource("Resource_nturt")
+Applications = Array[Object]([SubResource("Resource_4bxtu")])
+VFXs = Array[Object]([])
+Name = "Str Buff"
+OnGcd = true
+Cd = 3.0
+Icon = ExtResource("1_nvt36")

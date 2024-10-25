@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="CurrentTarget" load_steps=2 format=3 uid="uid://bexn6pnfexwqt"]
+
+[ext_resource type="Script" path="res://Scripts/Strategies/TargetStrat/CurrentTarget.cs" id="1_olg7m"]
+
+[resource]
+script = ExtResource("1_olg7m")
+MaxRange = 3.0

@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cnxk3fvcn588b"]
+
+[ext_resource type="Shader" uid="uid://dlpvnmvcoemi5" path="res://Art/testShader.tres" id="1_uou44"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_uou44")
+shader_parameter/Scale = 0.43
+shader_parameter/vertSmooth0 = -0.1
+shader_parameter/vertSmooth1 = 0.1
+shader_parameter/Perc = -0.033

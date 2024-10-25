@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="SelfTarget" load_steps=2 format=3 uid="uid://b5b14ef3yd67"]
+
+[ext_resource type="Script" path="res://Scripts/Strategies/TargetStrat/SelfTarget.cs" id="1_7qtrj"]
+
+[resource]
+script = ExtResource("1_7qtrj")

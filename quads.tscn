@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://db2kbtd3nt4wq"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_i2ayi"]
+inherit_velocity_ratio = 1.0
+direction = Vector3(0, 1, 0)
+spread = 180.0
+initial_velocity_min = 3.0
+initial_velocity_max = 3.0
+orbit_velocity_min = -2.0
+orbit_velocity_max = 2.0
+gravity = Vector3(0, 0, 0)
+damping_max = 3.0
+sub_emitter_keep_velocity = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_v2tpk"]
+size = Vector2(0.3, 0.3)
+
+[node name="Quads" type="GPUParticles3D"]
+amount = 20
+explosiveness = 1.0
+local_coords = true
+draw_order = 3
+transform_align = 1
+process_material = SubResource("ParticleProcessMaterial_i2ayi")
+draw_pass_1 = SubResource("QuadMesh_v2tpk")

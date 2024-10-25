@@ -1,0 +1,102 @@
+[gd_scene load_steps=7 format=3 uid="uid://dcp82s2amocb6"]
+
+[ext_resource type="Script" path="res://Scripts/Dungeon/DungeonRoom.cs" id="1_hs20d"]
+[ext_resource type="Material" uid="uid://crru5dpiq7rp3" path="res://Art/ground.tres" id="2_iej60"]
+[ext_resource type="Material" uid="uid://cyshnogkkfoux" path="res://Art/wall.tres" id="3_gmasi"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_5fly3"]
+vertices = PackedVector3Array(-8.25, 0.5, -8.25, -8.25, 0.5, 8.5, 8.5, 0.5, 8.5, 8.5, 0.5, -8.25)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_20cfj"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_24f1p"]
+
+[node name="Closed" type="Node3D" node_paths=PackedStringArray("EnemySpawns")]
+script = ExtResource("1_hs20d")
+EnemySpawns = []
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_5fly3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D"]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+material_override = ExtResource("2_iej60")
+mesh = SubResource("PlaneMesh_20cfj")
+skeleton = NodePath("../..")
+
+[node name="Walls" type="Node3D" parent="NavigationRegion3D"]
+
+[node name="Wall" type="MeshInstance3D" parent="NavigationRegion3D/Walls"]
+transform = Transform3D(8, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.5, 9.5)
+material_override = ExtResource("3_gmasi")
+mesh = SubResource("BoxMesh_24f1p")
+skeleton = NodePath("../../MeshInstance3D")
+
+[node name="Wall2" type="MeshInstance3D" parent="NavigationRegion3D/Walls"]
+transform = Transform3D(8, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.5, 9.5)
+material_override = ExtResource("3_gmasi")
+mesh = SubResource("BoxMesh_24f1p")
+skeleton = NodePath("../../MeshInstance3D")
+
+[node name="Wall3" type="MeshInstance3D" parent="NavigationRegion3D/Walls"]
+transform = Transform3D(8, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.5, -9.5)
+material_override = ExtResource("3_gmasi")
+mesh = SubResource("BoxMesh_24f1p")
+skeleton = NodePath("../../MeshInstance3D")
+
+[node name="Wall4" type="MeshInstance3D" parent="NavigationRegion3D/Walls"]
+transform = Transform3D(8, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.5, -9.5)
+material_override = ExtResource("3_gmasi")
+mesh = SubResource("BoxMesh_24f1p")
+skeleton = NodePath("../../MeshInstance3D")
+
+[node name="Wall5" type="MeshInstance3D" parent="NavigationRegion3D/Walls"]
+transform = Transform3D(-3.49691e-07, 0, 1, 0, 1, 0, -8, 0, -4.37114e-08, -9.5, 0.5, -6)
+material_override = ExtResource("3_gmasi")
+mesh = SubResource("BoxMesh_24f1p")
+skeleton = NodePath("../../MeshInstance3D")
+
+[node name="Wall6" type="MeshInstance3D" parent="NavigationRegion3D/Walls"]
+transform = Transform3D(-3.49691e-07, 0, 1, 0, 1, 0, -8, 0, -4.37114e-08, -9.5, 0.5, 6)
+material_override = ExtResource("3_gmasi")
+mesh = SubResource("BoxMesh_24f1p")
+skeleton = NodePath("../../MeshInstance3D")
+
+[node name="Wall7" type="MeshInstance3D" parent="NavigationRegion3D/Walls"]
+transform = Transform3D(-3.49691e-07, 0, 1, 0, 1, 0, -8, 0, -4.37114e-08, 9.5, 0.5, -6)
+material_override = ExtResource("3_gmasi")
+mesh = SubResource("BoxMesh_24f1p")
+skeleton = NodePath("../../MeshInstance3D")
+
+[node name="Wall8" type="MeshInstance3D" parent="NavigationRegion3D/Walls"]
+transform = Transform3D(-3.49691e-07, 0, 1, 0, 1, 0, -8, 0, -4.37114e-08, 9.5, 0.5, 6)
+material_override = ExtResource("3_gmasi")
+mesh = SubResource("BoxMesh_24f1p")
+skeleton = NodePath("../../MeshInstance3D")
+
+[node name="Gates" type="Node3D" parent="NavigationRegion3D"]
+
+[node name="N" type="MeshInstance3D" parent="NavigationRegion3D/Gates"]
+transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -9.5)
+material_override = ExtResource("3_gmasi")
+mesh = SubResource("BoxMesh_24f1p")
+skeleton = NodePath("../../MeshInstance3D")
+
+[node name="E" type="MeshInstance3D" parent="NavigationRegion3D/Gates"]
+transform = Transform3D(-1.74846e-07, 0, -1, 0, 1, 0, 4, 0, -4.37114e-08, 9.5, 0.5, 1.96701e-07)
+material_override = ExtResource("3_gmasi")
+mesh = SubResource("BoxMesh_24f1p")
+skeleton = NodePath("../../MeshInstance3D")
+
+[node name="S" type="MeshInstance3D" parent="NavigationRegion3D/Gates"]
+transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 9.5)
+material_override = ExtResource("3_gmasi")
+mesh = SubResource("BoxMesh_24f1p")
+skeleton = NodePath("../../MeshInstance3D")
+
+[node name="W" type="MeshInstance3D" parent="NavigationRegion3D/Gates"]
+transform = Transform3D(-1.74846e-07, 0, -1, 0, 1, 0, 4, 0, -4.37114e-08, -9.5, 0.5, -1.96701e-07)
+material_override = ExtResource("3_gmasi")
+mesh = SubResource("BoxMesh_24f1p")
+skeleton = NodePath("../../MeshInstance3D")
