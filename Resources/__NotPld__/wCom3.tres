@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="CombatAction" load_steps=7 format=3 uid="uid://bymo2sssn3dcv"]
+[gd_resource type="Resource" script_class="CombatAction" load_steps=9 format=3 uid="uid://bymo2sssn3dcv"]
 
 [ext_resource type="Script" path="res://Scripts/Commands/CombatAction.cs" id="1_d3i0u"]
 [ext_resource type="Script" path="res://Scripts/Strategies/ApplicationStrats/ApplyDamage.cs" id="1_ponk8"]
 [ext_resource type="Texture2D" uid="uid://cndwn5ftvejsf" path="res://Resources/__NotPld__/Icons/melee3.png" id="2_6gmay"]
 [ext_resource type="Resource" uid="uid://bexn6pnfexwqt" path="res://Resources/Common/TargetStrats/CurrentTarget_Range2.tres" id="2_rxqca"]
+[ext_resource type="Script" path="res://Scripts/Strategies/FlagStrats/ActionComboed.cs" id="2_xhe8s"]
 
 [sub_resource type="Resource" id="Resource_hd7s4"]
 script = ExtResource("1_ponk8")
@@ -13,6 +14,10 @@ Potency = 100
 script = ExtResource("1_ponk8")
 Potency = 330
 
+[sub_resource type="Resource" id="Resource_sx85m"]
+script = ExtResource("2_xhe8s")
+ComboAction = "Riot Blade"
+
 [resource]
 script = ExtResource("1_d3i0u")
 ComboAction = "Riot Blade"
@@ -20,7 +25,9 @@ Targeting = ExtResource("2_rxqca")
 VFXs = null
 Applications = Array[Object]([SubResource("Resource_hd7s4")])
 ComboApplications = Array[Object]([SubResource("Resource_ea57x")])
+FlagCondition = SubResource("Resource_sx85m")
 Name = "Rage of Halone"
 OnGcd = true
 Cd = 1.0
 Icon = ExtResource("2_6gmay")
+FlaggedOnly = false

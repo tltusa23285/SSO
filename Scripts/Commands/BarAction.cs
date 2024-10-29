@@ -24,10 +24,9 @@ namespace Commands
         [Export] public float Cd { get; set; } = 0;
         [Export] public Texture2D Icon { get; set; } = null;
 
-        protected Actor Source;
+        public Actor Source {  get; protected set; }
         private bool _flagged;
-
-        protected bool Flagged
+        public bool Flagged
         {
             get { return _flagged; }
             set
@@ -36,7 +35,7 @@ namespace Commands
                 CommandFlagChange?.Invoke(_flagged);
             }
         }
-
+        [Export] public bool FlaggedOnly = false;
 
         public bool OnCD => CdTimer != null;
         public double CdLeft => CdTimer != null ? CdTimer.TimeLeft : 1;

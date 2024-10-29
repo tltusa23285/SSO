@@ -20,3 +20,4 @@ Name = "Fast Blade"
 OnGcd = true
 Cd = 1.0
 Icon = ExtResource("2_3qwjl")
+FlaggedOnly = false

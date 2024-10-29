@@ -1,19 +1,27 @@
-[gd_scene load_steps=7 format=3 uid="uid://dtc0gorul7k30"]
+[gd_scene load_steps=9 format=3 uid="uid://dtc0gorul7k30"]
 
 [ext_resource type="Script" path="res://Scripts/UI/Actions/ActionButton.cs" id="1_ght8n"]
 [ext_resource type="Texture2D" uid="uid://dor111nssjtte" path="res://Art/UI/ActionMask.png" id="2_mb66r"]
 [ext_resource type="Texture2D" uid="uid://clmudc1hw68h" path="res://Art/UI/ActionPressed.png" id="3_0io5o"]
 [ext_resource type="Texture2D" uid="uid://5bol7pvuvv2f" path="res://Art/UI/ActionBorder.png" id="4_ft15q"]
 
+[sub_resource type="Gradient" id="Gradient_11xnt"]
+offsets = PackedFloat32Array(0, 0.995177)
+colors = PackedColorArray(0.917969, 0.834823, 0.157776, 1, 0.917647, 0.835294, 0.156863, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_lr3gr"]
+gradient = SubResource("Gradient_11xnt")
+width = 16
+
 [sub_resource type="Gradient" id="Gradient_tcmcs"]
-offsets = PackedFloat32Array(0, 0.272206, 0.747851, 1)
-colors = PackedColorArray(0.796875, 0.736151, 0.090271, 1, 0.796487, 0.736689, 0.0902345, 0.512894, 0.796091, 0.737237, 0.0901973, 0.0161541, 0.796078, 0.737255, 0.0901961, 0)
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 0.690196)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_e8ovb"]
 gradient = SubResource("Gradient_tcmcs")
 width = 16
 
-[node name="ActionButton" type="Button" node_paths=PackedStringArray("IconRect", "PressedRect", "FlagRect", "Key", "Timer", "CdTime", "CDFill")]
+[node name="ActionButton" type="Button" node_paths=PackedStringArray("IconRect", "PressedRect", "FlagRect", "DisabledRect", "Key", "Timer", "CdTime", "CDFill")]
 custom_minimum_size = Vector2(64, 64)
 offset_right = 32.0
 offset_bottom = 32.0
@@ -23,6 +31,7 @@ script = ExtResource("1_ght8n")
 IconRect = NodePath("Mask/Icon")
 PressedRect = NodePath("Mask/HL")
 FlagRect = NodePath("Mask/ComboFlag")
+DisabledRect = NodePath("Mask/Disabled")
 Key = NodePath("Mask/MarginContainer/Key")
 Timer = NodePath("Timer")
 CdTime = NodePath("Mask/TextureProgressBar/CdTimer")
@@ -94,6 +103,18 @@ grow_vertical = 2
 texture = ExtResource("3_0io5o")
 
 [node name="ComboFlag" type="TextureRect" parent="Mask"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -1.5708
+pivot_offset = Vector2(32, 32)
+texture = SubResource("GradientTexture1D_lr3gr")
+
+[node name="Disabled" type="TextureRect" parent="Mask"]
 visible = false
 layout_mode = 1
 anchors_preset = 15

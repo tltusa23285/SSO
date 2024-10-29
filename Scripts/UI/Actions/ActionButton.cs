@@ -7,6 +7,7 @@ public partial class ActionButton : Button
     [Export] public TextureRect IconRect;
     [Export] public TextureRect PressedRect;
     [Export] public TextureRect FlagRect;
+    [Export] public TextureRect DisabledRect;
     [Export] public Label Key;
     [Export] public Timer Timer;
     [Export] public Label CdTime;
@@ -15,7 +16,7 @@ public partial class ActionButton : Button
 
     private string InputName = null;
 
-    private BarAction CombatCommand;
+    private BarAction Command;
     public bool UsesGCD { get; private set; }
 
     public override void _Ready()
@@ -92,28 +93,29 @@ public partial class ActionButton : Button
     /// <param name="comm"></param>
     public void SetCommand(BarAction comm)
     {
-        if (CombatCommand != null)
+        if (Command != null)
         {
             SetCommandFlag(false);
-            CombatCommand.CooldownStart -= StartCdTimer;
-            CombatCommand.CooldownEnd -= CooldownEnded;
-            CombatCommand.CommandFlagChange -= SetCommandFlag;
+            Command.CooldownStart -= StartCdTimer;
+            Command.CooldownEnd -= CooldownEnded;
+            Command.CommandFlagChange -= SetCommandFlag;
         }
 
         SetIcon(null);
 
-        CombatCommand = comm;
+        Command = comm;
 
-        UsesGCD = CombatCommand != null ? CombatCommand.OnGcd : false;
+        UsesGCD = Command != null ? Command.OnGcd : false;
 
-        CdTime.Visible = CombatCommand == null ? false : (!CombatCommand.OnGcd || CombatCommand.Cd > Actors.Actor.GCD);
+        CdTime.Visible = Command == null ? false : (!Command.OnGcd || Command.Cd > Actors.Actor.GCD);
 
-        if (CombatCommand == null) return;
+        if (Command == null) return;
 
         SetIcon(comm.Icon);
-        CombatCommand.CooldownStart += StartCdTimer;
-        CombatCommand.CooldownEnd += CooldownEnded;
-        CombatCommand.CommandFlagChange += SetCommandFlag;
+        Command.CooldownStart += StartCdTimer;
+        Command.CooldownEnd += CooldownEnded;
+        Command.CommandFlagChange += SetCommandFlag;
+        SetCommandFlag(Command.Flagged);
     }
 
     /// <summary>
@@ -127,6 +129,11 @@ public partial class ActionButton : Button
 
     private void SetCommandFlag(bool isFlagged)
     {
+        if (Command.FlaggedOnly)
+        {
+            this.Disabled = !isFlagged;
+            DisabledRect.Visible = this.Disabled;
+        }
         FlagRect.Visible = isFlagged;
     }
 
@@ -150,7 +157,7 @@ public partial class ActionButton : Button
     private void OnButtonUp()
     {
         PressedRect.Visible = false;
-        CombatCommand?.Execute();
+        Command?.Execute();
     }
 
     #endregion
@@ -158,7 +165,7 @@ public partial class ActionButton : Button
     public override Variant _GetDragData(Vector2 atPosition)
     {
         // dont allow drag if button has no command, or is currently on cd
-        if (this.CombatCommand == null || !this.Timer.IsStopped()) return default;
+        if (this.Command == null || !this.Timer.IsStopped()) return default;
         PressedRect.Visible = false;
         SetDragPreview(MakePreview());
 
@@ -182,10 +189,10 @@ public partial class ActionButton : Button
     public override void _DropData(Vector2 atPosition, Variant data)
     {
         ActionButton other = data.As<ActionButton>();
-        BarAction c_com = this.CombatCommand;
+        BarAction c_com = this.Command;
         
-        this.SetCommand(other.CombatCommand);
-        HotbarMap.Instance.SetSlot(this.Name, this.CombatCommand != null ? this.CombatCommand.Name : null);
+        this.SetCommand(other.Command);
+        HotbarMap.Instance.SetSlot(this.Name, this.Command != null ? this.Command.Name : null);
 
         if (other.CanReceiveDrops)
         {

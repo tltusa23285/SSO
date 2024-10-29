@@ -21,26 +21,26 @@ namespace Commands.Combat
         [ExportGroup("Applications")]
         [Export] public ApplicationStratResource[] Applications;
         [Export] public ApplicationStratResource[] ComboApplications;
-
-        private bool IsComboed() 
-        {
-            if (string.IsNullOrEmpty(ComboAction)) return false;
-            return Source.LastCommand == ComboAction;
-        }
+        [ExportGroup("Flagged")]
+        [Export] public FlaggedStratResource FlagCondition;
 
         protected override bool ConstructCommand()
         {
-            Source.CommandUsed += SetFlagged;
+            if (FlagCondition != null)
+            {
+                FlagCondition.SetupFlagCondition(this);
+            }
             return true;
         }
 
-        private void SetFlagged(string comm)
+        public void SetFlagged(bool isFlagged)
         {
-            this.Flagged = IsComboed();
+            this.Flagged = isFlagged;
         }
 
         protected override bool ExecuteCommand()
         {
+            if (this.FlaggedOnly && !Flagged) return false;
             if (!Targeting.GetTargets(Source, out HashSet<Actor> targets)) return false;
 
             foreach (var item in VFXs)
@@ -48,7 +48,7 @@ namespace Commands.Combat
                 item.ApplyVFX(Source, targets);
             }
 
-            foreach (var app in IsComboed() ? ComboApplications : Applications)
+            foreach (var app in Flagged ? ComboApplications : Applications)
             {
                 app.Apply(Source, targets);
             }

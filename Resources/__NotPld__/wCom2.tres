@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="CombatAction" load_steps=7 format=3 uid="uid://bn2p4b7kefjnb"]
+[gd_resource type="Resource" script_class="CombatAction" load_steps=9 format=3 uid="uid://bn2p4b7kefjnb"]
 
 [ext_resource type="Script" path="res://Scripts/Strategies/ApplicationStrats/ApplyDamage.cs" id="1_kbvur"]
 [ext_resource type="Script" path="res://Scripts/Commands/CombatAction.cs" id="1_pwh2d"]
 [ext_resource type="Texture2D" uid="uid://5khs231pkjwt" path="res://Resources/__NotPld__/Icons/melee2.png" id="2_gxlbv"]
+[ext_resource type="Script" path="res://Scripts/Strategies/FlagStrats/ActionComboed.cs" id="2_jelfr"]
 [ext_resource type="Resource" uid="uid://bexn6pnfexwqt" path="res://Resources/Common/TargetStrats/CurrentTarget_Range2.tres" id="2_qwpkl"]
 
 [sub_resource type="Resource" id="Resource_hd7s4"]
@@ -13,6 +14,10 @@ Potency = 100
 script = ExtResource("1_kbvur")
 Potency = 260
 
+[sub_resource type="Resource" id="Resource_8yn62"]
+script = ExtResource("2_jelfr")
+ComboAction = "Fast Blade"
+
 [resource]
 script = ExtResource("1_pwh2d")
 ComboAction = "Fast Blade"
@@ -20,7 +25,9 @@ Targeting = ExtResource("2_qwpkl")
 VFXs = null
 Applications = Array[Object]([SubResource("Resource_hd7s4")])
 ComboApplications = Array[Object]([SubResource("Resource_ea57x")])
+FlagCondition = SubResource("Resource_8yn62")
 Name = "Riot Blade"
 OnGcd = true
 Cd = 1.0
 Icon = ExtResource("2_gxlbv")
+FlaggedOnly = false
