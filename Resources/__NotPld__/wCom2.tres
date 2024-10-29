@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Scripts/Strategies/ApplicationStrats/ApplyDamage.cs" id="1_kbvur"]
 [ext_resource type="Script" path="res://Scripts/Commands/CombatAction.cs" id="1_pwh2d"]
+[ext_resource type="Texture2D" uid="uid://5khs231pkjwt" path="res://Resources/__NotPld__/Icons/melee2.png" id="2_gxlbv"]
 [ext_resource type="Resource" uid="uid://bexn6pnfexwqt" path="res://Resources/Common/TargetStrats/CurrentTarget_Range2.tres" id="2_qwpkl"]
-[ext_resource type="Texture2D" uid="uid://dpksiycd4vhg8" path="res://Art/UI/Slash.png" id="2_uhb4v"]
 
 [sub_resource type="Resource" id="Resource_hd7s4"]
 script = ExtResource("1_kbvur")
@@ -23,4 +23,4 @@ ComboApplications = Array[Object]([SubResource("Resource_ea57x")])
 Name = "Riot Blade"
 OnGcd = true
 Cd = 1.0
-Icon = ExtResource("2_uhb4v")
+Icon = ExtResource("2_gxlbv")

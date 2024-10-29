@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="CombatAction" load_steps=8 format=3 uid="uid://p4yraq06ufil"]
 
 [ext_resource type="Script" path="res://Scripts/Commands/CombatAction.cs" id="1_cwrdv"]
-[ext_resource type="Texture2D" uid="uid://kaolv6hntukv" path="res://icon.svg" id="1_p012i"]
 [ext_resource type="Script" path="res://Scripts/TempEffects/TempEffectScripts/StatBuffData.cs" id="1_t4qpq"]
 [ext_resource type="Script" path="res://Scripts/Strategies/ApplicationStrats/ApplyTemporaryEffect.cs" id="2_q8psr"]
 [ext_resource type="Resource" uid="uid://b5b14ef3yd67" path="res://Resources/Common/TargetStrats/SelfTarget.tres" id="3_s6182"]
+[ext_resource type="Texture2D" uid="uid://cofonn1ejm2fy" path="res://Resources/__NotPld__/Icons/buff.png" id="4_yqqjm"]
 
 [sub_resource type="Resource" id="Resource_fx6qf"]
 script = ExtResource("1_t4qpq")
@@ -14,7 +14,7 @@ ModValue = 25
 EffectId = ""
 DisplayName = ""
 FlavorText = ""
-Icon = ExtResource("1_p012i")
+Icon = ExtResource("4_yqqjm")
 Type = 0
 Visibility = 0
 Removable = true
@@ -37,4 +37,4 @@ ComboApplications = Array[Object]([])
 Name = "Fight or Flight"
 OnGcd = false
 Cd = 60.0
-Icon = ExtResource("1_p012i")
+Icon = ExtResource("4_yqqjm")

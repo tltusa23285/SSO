@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="CombatAction" load_steps=12 format=3 uid="uid://chc7h55ew7f1g"]
+[gd_resource type="Resource" script_class="CombatAction" load_steps=10 format=3 uid="uid://chc7h55ew7f1g"]
 
 [ext_resource type="Script" path="res://Scripts/Strategies/ApplicationStrats/ApplyDamage.cs" id="1_8erq6"]
 [ext_resource type="Script" path="res://Scripts/Commands/CombatAction.cs" id="1_dsmhk"]
 [ext_resource type="Script" path="res://Scripts/TempEffects/TempEffectScripts/DamageOverTimeData.cs" id="2_efj00"]
 [ext_resource type="Script" path="res://Scripts/Strategies/ApplicationStrats/ApplyTemporaryEffect.cs" id="3_sjmmp"]
+[ext_resource type="Texture2D" uid="uid://mno71ldennt8" path="res://Resources/__NotPld__/Icons/aoedot.png" id="4_64ykr"]
 [ext_resource type="Resource" uid="uid://cj1l701p7litr" path="res://Resources/Common/TargetStrats/RadialTarget_Range5.tres" id="4_t58q7"]
 
 [sub_resource type="Resource" id="Resource_voqqn"]
@@ -29,15 +30,6 @@ script = ExtResource("3_sjmmp")
 ApplyTo = 0
 Effect = SubResource("Resource_6lwop")
 
-[sub_resource type="Gradient" id="Gradient_nwiig"]
-colors = PackedColorArray(0, 0, 0, 1, 0.660156, 0.123779, 0, 1)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_pavqn"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_x6ck8"]
-color_ramp = SubResource("Gradient_nwiig")
-noise = SubResource("FastNoiseLite_pavqn")
-
 [resource]
 script = ExtResource("1_dsmhk")
 ComboAction = ""
@@ -48,4 +40,4 @@ ComboApplications = null
 Name = "Circle of Scorn"
 OnGcd = false
 Cd = 30.0
-Icon = SubResource("NoiseTexture2D_x6ck8")
+Icon = ExtResource("4_64ykr")

@@ -1,11 +1,15 @@
-[gd_resource type="Resource" script_class="CombatAction" load_steps=2 format=3 uid="uid://dt0d0r4oyyrgp"]
+[gd_resource type="Resource" script_class="CombatAction" load_steps=3 format=3 uid="uid://dt0d0r4oyyrgp"]
 
 [ext_resource type="Script" path="res://Scripts/Commands/CombatAction.cs" id="1_ew2pe"]
+[ext_resource type="Texture2D" uid="uid://cofonn1ejm2fy" path="res://Resources/__NotPld__/Icons/buff.png" id="1_lr8lm"]
 
 [resource]
 script = ExtResource("1_ew2pe")
-Applications = null
+ComboAction = ""
 VFXs = null
+Applications = null
+ComboApplications = null
 Name = ""
 OnGcd = true
 Cd = 1.0
+Icon = ExtResource("1_lr8lm")
