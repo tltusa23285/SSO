@@ -20,7 +20,7 @@ namespace Commands.Combat
         [Export] public VFXStratResource[] VFXs;
         [ExportGroup("Applications")]
         [Export] public ApplicationStratResource[] Applications;
-        [Export] public ApplicationStratResource[] ComboApplications;
+        [Export] public ApplicationStratResource[] FlaggedApplications;
         [ExportGroup("Flagged")]
         [Export] public FlaggedStratResource FlagCondition;
 
@@ -48,7 +48,7 @@ namespace Commands.Combat
                 item.ApplyVFX(Source, targets);
             }
 
-            foreach (var app in Flagged ? ComboApplications : Applications)
+            foreach (var app in Flagged ? FlaggedApplications : Applications)
             {
                 app.Apply(Source, targets);
             }

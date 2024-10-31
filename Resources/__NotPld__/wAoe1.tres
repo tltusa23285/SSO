@@ -20,3 +20,4 @@ Name = "Total Eclipse"
 OnGcd = true
 Cd = 1.0
 Icon = ExtResource("2_bf0q3")
+FlaggedOnly = false

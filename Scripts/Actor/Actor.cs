@@ -6,7 +6,7 @@ namespace Actors
 {
     public partial class Actor : CharacterBody3D, ISelectable
     {
-        public const float GCD = 2.5f;
+        public const float GCD = 2.0f;
         public delegate void LastCommandEventHandler(string comm);
         public LastCommandEventHandler CommandUsed;
 

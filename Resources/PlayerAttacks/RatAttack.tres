@@ -28,3 +28,4 @@ ComboApplications = null
 Name = ""
 OnGcd = true
 Cd = 1.0
+FlaggedOnly = false

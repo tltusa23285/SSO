@@ -41,3 +41,4 @@ Name = "Circle of Scorn"
 OnGcd = false
 Cd = 30.0
 Icon = ExtResource("4_64ykr")
+FlaggedOnly = false

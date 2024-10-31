@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://d2ovd10is7ytl"]
+[gd_scene load_steps=14 format=3 uid="uid://d2ovd10is7ytl"]
 
 [ext_resource type="Script" path="res://Scripts/Actor/ActorGraphicController.cs" id="1_h3hrv"]
 [ext_resource type="Script" path="res://Scripts/MiscComponents/Health.cs" id="2_25qg2"]
@@ -13,6 +13,12 @@
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ensnm"]
 radius = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i0xjm"]
+bg_color = Color(0.125, 0.125, 0.125, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_21amd"]
+bg_color = Color(0.855469, 0.320801, 0.320801, 1)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_mfw4f"]
 viewport_path = NodePath("TransformBreak/Graphic/SubViewport")
@@ -73,17 +79,20 @@ IdleAnim = "Idle"
 
 [node name="SubViewport" type="SubViewport" parent="TransformBreak/Graphic"]
 transparent_bg = true
-size = Vector2i(256, 32)
+size = Vector2i(128, 8)
 
 [node name="ProgressBar" type="ProgressBar" parent="TransformBreak/Graphic/SubViewport" node_paths=PackedStringArray("Label")]
 offset_right = 256.0
 offset_bottom = 32.0
+theme_override_styles/background = SubResource("StyleBoxFlat_i0xjm")
+theme_override_styles/fill = SubResource("StyleBoxFlat_21amd")
 max_value = 1.0
 show_percentage = false
 script = ExtResource("7_4incg")
 Label = NodePath("Label")
 
 [node name="Label" type="Label" parent="TransformBreak/Graphic/SubViewport/ProgressBar"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -94,7 +103,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Sprite3D" type="Sprite3D" parent="TransformBreak/Graphic"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.89312, 0)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.5, 0)
 texture = SubResource("ViewportTexture_mfw4f")
 
 [connection signal="HealthChange" from="Health" to="TransformBreak/Graphic/SubViewport/ProgressBar" method="SetBar"]

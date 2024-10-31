@@ -6,13 +6,13 @@
 [ext_resource type="Script" path="res://Scripts/Strategies/FlagStrats/ActionComboed.cs" id="2_yfw2q"]
 [ext_resource type="Script" path="res://Scripts/Strategies/TargetStrat/CurrentTarget.cs" id="3_dh4b1"]
 
-[sub_resource type="Resource" id="Resource_w1w4c"]
-script = ExtResource("1_kfk8p")
-Potency = 100
-
 [sub_resource type="Resource" id="Resource_qk83c"]
 script = ExtResource("2_yfw2q")
 ComboAction = "Rage of Halone"
+
+[sub_resource type="Resource" id="Resource_w1w4c"]
+script = ExtResource("1_kfk8p")
+Potency = 100
 
 [sub_resource type="Resource" id="Resource_jw1fg"]
 script = ExtResource("3_dh4b1")
@@ -23,8 +23,8 @@ script = ExtResource("1_k4dvy")
 ComboAction = ""
 Targeting = SubResource("Resource_jw1fg")
 VFXs = null
-Applications = Array[Object]([SubResource("Resource_w1w4c")])
-ComboApplications = null
+Applications = null
+FlaggedApplications = Array[Object]([SubResource("Resource_w1w4c")])
 FlagCondition = SubResource("Resource_qk83c")
 Name = "Shield Throw"
 OnGcd = true

@@ -38,3 +38,4 @@ Name = "Fight or Flight"
 OnGcd = false
 Cd = 60.0
 Icon = ExtResource("4_yqqjm")
+FlaggedOnly = false

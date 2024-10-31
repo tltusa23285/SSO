@@ -22,3 +22,4 @@ ComboApplications = null
 Name = "Fast Blade"
 OnGcd = true
 Cd = 1.0
+FlaggedOnly = false

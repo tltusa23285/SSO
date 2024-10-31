@@ -1070,11 +1070,15 @@ BaseStats = {
 [node name="EnemyController" parent="." index="4"]
 process_mode = 4
 
-[node name="Health" parent="." index="5"]
-MaxHealth = 10000
-
 [node name="Graphic" parent="TransformBreak" index="0" node_paths=PackedStringArray("AnimPlayer")]
 AnimPlayer = NodePath("rat/AnimationPlayer")
+
+[node name="SubViewport" parent="TransformBreak/Graphic" index="0"]
+size = Vector2i(64, 4)
+
+[node name="ProgressBar" parent="TransformBreak/Graphic/SubViewport" index="0"]
+offset_right = 64.0
+offset_bottom = 4.0
 
 [node name="Sprite3D" parent="TransformBreak/Graphic" index="1"]
 texture = SubResource("ViewportTexture_on575")
