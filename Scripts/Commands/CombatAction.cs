@@ -12,7 +12,7 @@ namespace Commands.Combat
     [GlobalClass]
     public partial class CombatAction : BarAction
     {
-        [Export] public string ComboAction;
+        [Export] public bool IsComboBreaker = false;
 
         [ExportGroup("Targeting")]
         [Export] public TargetStratResource Targeting;
@@ -42,6 +42,8 @@ namespace Commands.Combat
         {
             if (this.FlaggedOnly && !Flagged) return false;
             if (!Targeting.GetTargets(Source, out HashSet<Actor> targets)) return false;
+
+            if(IsComboBreaker && Source.NextComboAction != this.Name) Source.NextComboAction = null;
 
             foreach (var item in VFXs)
             {

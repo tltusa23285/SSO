@@ -2,13 +2,12 @@ using Actors;
 using Godot;
 using System;
 using System.Collections.Generic;
-using TemporaryEffects;
 
 namespace Strategies
 {
     [GlobalClass]
-	public partial class ApplyTemporaryEffect : ApplicationStratResource
-	{
+    public partial class RemoveTemporaryEffect : ApplicationStratResource
+    {
         private enum APP_TYPE
         {
             Targets,
@@ -16,7 +15,7 @@ namespace Strategies
         }
 
         [Export] private APP_TYPE ApplyTo;
-        [Export] private TemporaryEffectData Effect;
+        [Export] private string EffectID;
         public override void Apply(Actor source, HashSet<Actor> targets)
         {
             switch (ApplyTo)
@@ -24,13 +23,11 @@ namespace Strategies
                 case APP_TYPE.Targets:
                     foreach (var item in targets)
                     {
-                        if (!Effect.ApplyEffect(source, item))
-                            GD.PushError($"Failed to apply temp effect {Effect.EffectId} to {item.Stats.DisplayName}");
+                        item.TempEffects.RemoveEffect(EffectID);
                     }
                     break;
                 case APP_TYPE.Source:
-                    if (!Effect.ApplyEffect(source, source))
-                        GD.PushError($"Failed to apply temp effect {Effect.EffectId} to {source.Stats.DisplayName}");
+                    source.TempEffects.RemoveEffect(EffectID);
                     break;
                 default:
                     break;

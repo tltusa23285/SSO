@@ -1,18 +1,24 @@
-[gd_resource type="Resource" script_class="CombatAction" load_steps=9 format=3 uid="uid://cg1ub46mnh8mc"]
+[gd_resource type="Resource" script_class="CombatAction" load_steps=11 format=3 uid="uid://cg1ub46mnh8mc"]
 
 [ext_resource type="Script" path="res://Scripts/Commands/CombatAction.cs" id="1_k4dvy"]
 [ext_resource type="Script" path="res://Scripts/Strategies/ApplicationStrats/ApplyDamage.cs" id="1_kfk8p"]
+[ext_resource type="Script" path="res://Scripts/Strategies/FlagStrats/TempEffectActive.cs" id="1_n4mm4"]
 [ext_resource type="Texture2D" uid="uid://xjhk1anp42fp" path="res://Resources/__NotPld__/Icons/shieIdthrow.png" id="2_rsykn"]
-[ext_resource type="Script" path="res://Scripts/Strategies/FlagStrats/ActionComboed.cs" id="2_yfw2q"]
 [ext_resource type="Script" path="res://Scripts/Strategies/TargetStrat/CurrentTarget.cs" id="3_dh4b1"]
+[ext_resource type="Script" path="res://Scripts/Strategies/ApplicationStrats/RemoveTemporaryEffect.cs" id="3_tmuce"]
 
-[sub_resource type="Resource" id="Resource_qk83c"]
-script = ExtResource("2_yfw2q")
-ComboAction = "Rage of Halone"
+[sub_resource type="Resource" id="Resource_84i7q"]
+script = ExtResource("1_n4mm4")
+EffectID = "Throw Ready"
 
 [sub_resource type="Resource" id="Resource_w1w4c"]
 script = ExtResource("1_kfk8p")
 Potency = 100
+
+[sub_resource type="Resource" id="Resource_csx0s"]
+script = ExtResource("3_tmuce")
+ApplyTo = 1
+EffectID = "Throw Ready"
 
 [sub_resource type="Resource" id="Resource_jw1fg"]
 script = ExtResource("3_dh4b1")
@@ -20,14 +26,14 @@ MaxRange = 20.0
 
 [resource]
 script = ExtResource("1_k4dvy")
-ComboAction = ""
+IsComboBreaker = false
 Targeting = SubResource("Resource_jw1fg")
 VFXs = null
 Applications = null
-FlaggedApplications = Array[Object]([SubResource("Resource_w1w4c")])
-FlagCondition = SubResource("Resource_qk83c")
+FlaggedApplications = Array[Object]([SubResource("Resource_w1w4c"), SubResource("Resource_csx0s")])
+FlagCondition = SubResource("Resource_84i7q")
 Name = "Shield Throw"
-OnGcd = true
+OnGcd = false
 Cd = 1.0
 Icon = ExtResource("2_rsykn")
 FlaggedOnly = true

@@ -8,6 +8,8 @@ namespace Actors
     public partial class PlayerController : ActorController
     {
         [ExportGroup("Player Controller")]
+        [Export] private float ActionBufferTime = 0.5f;
+        private BarAction QueuedAction = null;
         [ExportSubgroup("Player")]
         [Export] private Aimlook LookControl;
         [Export] private PlayerClass PlayerClass;
@@ -42,15 +44,27 @@ namespace Actors
         private double AutoTimer = 0;
         private Vector2 InputDir;
         private Vector3 MoveDir;
+        private double QueuedActionTimer = 0;
 
         protected override void OnProcess(in double delta)
         {
             AutoTimer += delta;
             GcdTimer += delta;
             oGcdTimer += delta;
+            QueuedActionTimer -= delta;
+
             if (AutoTimer >= 2.5)
             {
                 AutoTimer = C_Actor.ActionBook.DefaultAttack.Execute() ? 0 : 1;
+            }
+
+            // action timer updates after proces loop,
+            // so we use -delta instead of 0 to effectively perform the queue on the frame after it comes off cooldown
+            if (QueuedActionTimer <= -delta && QueuedAction != null)
+            {
+                GD.Print($"Performing queued {QueuedAction.Name}");
+                QueuedAction.Execute();
+                QueuedAction = null;
             }
 
             InputDir = Input.GetVector(KeyMap.StrafeLeft, KeyMap.StrafeRight, KeyMap.Forward, KeyMap.Backward);
@@ -91,7 +105,6 @@ namespace Actors
             {
                 if (comm.OnGcd)
                 {
-                    C_Actor.LastCommand = comm.Name;
                     foreach (var item in C_Actor.ActionBook.Actions)
                     {
                         if (item.OnGcd) item.SetCooldown(Actor.GCD);
@@ -102,7 +115,19 @@ namespace Actors
                     comm.SetCooldown(comm.Cd);
                 }
             }
+            else
+            {
+                GD.Print($"{comm.Name} :: {msg}");
+                if (QueuedAction != comm && comm.CdLeft <= ActionBufferTime)
+                {
+                    GD.Print($"Queued {comm.Name}");
+                    QueuedAction = comm;
+                    QueuedActionTimer = comm.CdLeft;
+                }
+            }
         }
+
+
 
         private bool TrySelectTarget(InputEventMouse input)
         {

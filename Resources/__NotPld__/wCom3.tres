@@ -1,26 +1,52 @@
-[gd_resource type="Resource" script_class="CombatAction" load_steps=8 format=3 uid="uid://bymo2sssn3dcv"]
+[gd_resource type="Resource" script_class="CombatAction" load_steps=15 format=3 uid="uid://bymo2sssn3dcv"]
 
 [ext_resource type="Script" path="res://Scripts/Commands/CombatAction.cs" id="1_d3i0u"]
 [ext_resource type="Script" path="res://Scripts/Strategies/ApplicationStrats/ApplyDamage.cs" id="1_ponk8"]
 [ext_resource type="Texture2D" uid="uid://cndwn5ftvejsf" path="res://Resources/__NotPld__/Icons/melee3.png" id="2_6gmay"]
 [ext_resource type="Resource" uid="uid://bexn6pnfexwqt" path="res://Resources/Common/TargetStrats/CurrentTarget_Range2.tres" id="2_rxqca"]
 [ext_resource type="Script" path="res://Scripts/Strategies/FlagStrats/ActionComboed.cs" id="2_xhe8s"]
+[ext_resource type="Script" path="res://Scripts/TempEffects/TempEffectScripts/FlaggingData.cs" id="3_fwgen"]
+[ext_resource type="Script" path="res://Scripts/Strategies/ApplicationStrats/ApplyTemporaryEffect.cs" id="4_vb8n6"]
+[ext_resource type="Script" path="res://Scripts/Strategies/ApplicationStrats/BreakCombo.cs" id="5_kq8v3"]
+
+[sub_resource type="Resource" id="Resource_1rfwi"]
+script = ExtResource("1_ponk8")
+Potency = 100
+
+[sub_resource type="Resource" id="Resource_sx85m"]
+script = ExtResource("2_xhe8s")
 
 [sub_resource type="Resource" id="Resource_hd7s4"]
 script = ExtResource("1_ponk8")
 Potency = 330
 
-[sub_resource type="Resource" id="Resource_sx85m"]
-script = ExtResource("2_xhe8s")
-ComboAction = "Riot Blade"
+[sub_resource type="Resource" id="Resource_tbk5s"]
+script = ExtResource("3_fwgen")
+EffectId = "Throw Ready"
+DisplayName = ""
+FlavorText = ""
+Type = 0
+Visibility = 0
+Removable = true
+InitialDuration = 10
+MaxDuration = 10
+TimeAddedOnRefresh = 999
+
+[sub_resource type="Resource" id="Resource_v5kn5"]
+script = ExtResource("4_vb8n6")
+ApplyTo = 1
+Effect = SubResource("Resource_tbk5s")
+
+[sub_resource type="Resource" id="Resource_8j634"]
+script = ExtResource("5_kq8v3")
 
 [resource]
 script = ExtResource("1_d3i0u")
-ComboAction = "Riot Blade"
+IsComboBreaker = true
 Targeting = ExtResource("2_rxqca")
 VFXs = null
-Applications = Array[Object]([SubResource("Resource_hd7s4")])
-FlaggedApplications = Array[Object]([SubResource("Resource_hd7s4")])
+Applications = Array[Object]([SubResource("Resource_1rfwi")])
+FlaggedApplications = Array[Object]([SubResource("Resource_hd7s4"), SubResource("Resource_v5kn5"), SubResource("Resource_8j634")])
 FlagCondition = SubResource("Resource_sx85m")
 Name = "Rage of Halone"
 OnGcd = true

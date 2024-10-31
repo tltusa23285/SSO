@@ -52,7 +52,7 @@ namespace Commands
         {
             if (OnCD)
             {
-                CommandExecuted?.Invoke(false, this, "On Cooldown");
+                CommandExecuted?.Invoke(false, this, $"On Cooldown {CdLeft}");
                 return false;
             }
             bool success = ExecuteCommand();

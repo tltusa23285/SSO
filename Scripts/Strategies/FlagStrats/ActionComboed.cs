@@ -7,7 +7,6 @@ namespace Strategies
     [GlobalClass]
     public partial class ActionComboed : FlaggedStratResource
 	{
-        [Export] protected string ComboAction;
         protected override void SetCondition()
         {
             Action.Source.CommandUsed += CheckCombo;
@@ -15,10 +14,7 @@ namespace Strategies
 
         private void CheckCombo(string comm)
         {
-            Action.SetFlagged
-                (
-                    ComboAction == comm
-                );        
+            Action.SetFlagged(Action.Name == comm);        
         }
     } 
 }

@@ -12,7 +12,7 @@ namespace Actors
 
         private string _lastCommand;
 
-        public string LastCommand
+        public string NextComboAction
         {
             get { return _lastCommand; }
             set

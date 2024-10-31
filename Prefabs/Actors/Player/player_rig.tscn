@@ -1728,6 +1728,7 @@ Actor = NodePath("..")
 
 [node name="PlayerController" type="Node" parent="." node_paths=PackedStringArray("LookControl", "PlayerClass", "Camera", "PlayerUI", "C_Actor")]
 script = ExtResource("5_njg6e")
+ActionBufferTime = 1.0
 LookControl = NodePath("../Aimlook")
 PlayerClass = NodePath("../StatBlock")
 Camera = NodePath("../Aimlook/CamHold/Camera3D")
