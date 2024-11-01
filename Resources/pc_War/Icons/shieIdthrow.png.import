@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cndwn5ftvejsf"
-path="res://.godot/imported/melee3.png-31ecde237d41b4ac4818142ad3299db1.ctex"
+uid="uid://xjhk1anp42fp"
+path="res://.godot/imported/shieIdthrow.png-ee9d9817c7a1fa29b2cc017c7236b450.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/__NotPld__/Icons/melee3.png"
-dest_files=["res://.godot/imported/melee3.png-31ecde237d41b4ac4818142ad3299db1.ctex"]
+source_file="res://Resources/pc_War/Icons/shieIdthrow.png"
+dest_files=["res://.godot/imported/shieIdthrow.png-ee9d9817c7a1fa29b2cc017c7236b450.ctex"]
 
 [params]
 

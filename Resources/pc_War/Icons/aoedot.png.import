@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://xjhk1anp42fp"
-path="res://.godot/imported/shieIdthrow.png-044ec28b2269d5fda8ffcd9b5ab36887.ctex"
+uid="uid://mno71ldennt8"
+path="res://.godot/imported/aoedot.png-f35364453b4cad4829da8a21df0a4cfb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/__NotPld__/Icons/shieIdthrow.png"
-dest_files=["res://.godot/imported/shieIdthrow.png-044ec28b2269d5fda8ffcd9b5ab36887.ctex"]
+source_file="res://Resources/pc_War/Icons/aoedot.png"
+dest_files=["res://.godot/imported/aoedot.png-f35364453b4cad4829da8a21df0a4cfb.ctex"]
 
 [params]
 

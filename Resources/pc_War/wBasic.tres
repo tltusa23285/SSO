@@ -14,7 +14,7 @@ MaxRange = 0.5
 
 [resource]
 script = ExtResource("3_061lr")
-ComboAction = ""
+IsComboBreaker = false
 Targeting = SubResource("Resource_aawi8")
 VFXs = null
 Applications = Array[Object]([SubResource("Resource_hd7s4")])

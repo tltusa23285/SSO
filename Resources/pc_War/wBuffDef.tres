@@ -1,15 +1,16 @@
 [gd_resource type="Resource" script_class="CombatAction" load_steps=3 format=3 uid="uid://dt0d0r4oyyrgp"]
 
 [ext_resource type="Script" path="res://Scripts/Commands/CombatAction.cs" id="1_ew2pe"]
-[ext_resource type="Texture2D" uid="uid://cofonn1ejm2fy" path="res://Resources/__NotPld__/Icons/buff.png" id="1_lr8lm"]
+[ext_resource type="Texture2D" uid="uid://cofonn1ejm2fy" path="res://Resources/pc_War/Icons/buff.png" id="1_lr8lm"]
 
 [resource]
 script = ExtResource("1_ew2pe")
-ComboAction = ""
+IsComboBreaker = false
 VFXs = null
 Applications = null
-ComboApplications = null
-Name = ""
+FlaggedApplications = null
+Name = "Bulwark"
 OnGcd = true
 Cd = 1.0
 Icon = ExtResource("1_lr8lm")
+FlaggedOnly = false

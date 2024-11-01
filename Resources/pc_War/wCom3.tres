@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" path="res://Scripts/Commands/CombatAction.cs" id="1_d3i0u"]
 [ext_resource type="Script" path="res://Scripts/Strategies/ApplicationStrats/ApplyDamage.cs" id="1_ponk8"]
-[ext_resource type="Texture2D" uid="uid://cndwn5ftvejsf" path="res://Resources/__NotPld__/Icons/melee3.png" id="2_6gmay"]
 [ext_resource type="Resource" uid="uid://bexn6pnfexwqt" path="res://Resources/Common/TargetStrats/CurrentTarget_Range2.tres" id="2_rxqca"]
 [ext_resource type="Script" path="res://Scripts/Strategies/FlagStrats/ActionComboed.cs" id="2_xhe8s"]
 [ext_resource type="Script" path="res://Scripts/TempEffects/TempEffectScripts/FlaggingData.cs" id="3_fwgen"]
 [ext_resource type="Script" path="res://Scripts/Strategies/ApplicationStrats/ApplyTemporaryEffect.cs" id="4_vb8n6"]
 [ext_resource type="Script" path="res://Scripts/Strategies/ApplicationStrats/BreakCombo.cs" id="5_kq8v3"]
+[ext_resource type="Texture2D" uid="uid://cndwn5ftvejsf" path="res://Resources/pc_War/Icons/melee3.png" id="6_cxsc8"]
 
 [sub_resource type="Resource" id="Resource_1rfwi"]
 script = ExtResource("1_ponk8")
@@ -48,8 +48,8 @@ VFXs = null
 Applications = Array[Object]([SubResource("Resource_1rfwi")])
 FlaggedApplications = Array[Object]([SubResource("Resource_hd7s4"), SubResource("Resource_v5kn5"), SubResource("Resource_8j634")])
 FlagCondition = SubResource("Resource_sx85m")
-Name = "Rage of Halone"
+Name = "Triple Strike"
 OnGcd = true
 Cd = 1.0
-Icon = ExtResource("2_6gmay")
+Icon = ExtResource("6_cxsc8")
 FlaggedOnly = false

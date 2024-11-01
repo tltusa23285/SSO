@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ctm1q4050pwtv"]
 
-[ext_resource type="Script" path="res://Scripts/UI/PlayerUI.cs" id="1_2ddog"]
+[ext_resource type="Script" path="res://Scripts/UI/ActionBarManager.cs" id="1_2ddog"]
 [ext_resource type="PackedScene" uid="uid://cwlb1yx71f0ys" path="res://Prefabs/UI/Actions/hotbar_container.tscn" id="3_1p7ao"]
 
 [node name="PlayerUI" type="Control" node_paths=PackedStringArray("Bars")]

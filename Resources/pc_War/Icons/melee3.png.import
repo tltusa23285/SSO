@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvn4d3ipcjyh6"
-path="res://.godot/imported/aoe1.png-f4d43672d39d8b94260669ce3a2433d5.ctex"
+uid="uid://cndwn5ftvejsf"
+path="res://.godot/imported/melee3.png-5b0b7be3d9c690c7432d2659c17ba6fc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/__NotPld__/Icons/aoe1.png"
-dest_files=["res://.godot/imported/aoe1.png-f4d43672d39d8b94260669ce3a2433d5.ctex"]
+source_file="res://Resources/pc_War/Icons/melee3.png"
+dest_files=["res://.godot/imported/melee3.png-5b0b7be3d9c690c7432d2659c17ba6fc.ctex"]
 
 [params]
 

@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" path="res://Scripts/Strategies/ApplicationStrats/ApplyDamage.cs" id="1_kbvur"]
 [ext_resource type="Script" path="res://Scripts/Commands/CombatAction.cs" id="1_pwh2d"]
-[ext_resource type="Texture2D" uid="uid://5khs231pkjwt" path="res://Resources/__NotPld__/Icons/melee2.png" id="2_gxlbv"]
 [ext_resource type="Script" path="res://Scripts/Strategies/FlagStrats/ActionComboed.cs" id="2_jelfr"]
 [ext_resource type="Resource" uid="uid://bexn6pnfexwqt" path="res://Resources/Common/TargetStrats/CurrentTarget_Range2.tres" id="2_qwpkl"]
 [ext_resource type="Script" path="res://Scripts/Strategies/ApplicationStrats/SetCombo.cs" id="3_1cgj2"]
+[ext_resource type="Texture2D" uid="uid://5khs231pkjwt" path="res://Resources/pc_War/Icons/melee2.png" id="4_xjqll"]
 
 [sub_resource type="Resource" id="Resource_hd7s4"]
 script = ExtResource("1_kbvur")
@@ -20,7 +20,7 @@ Potency = 260
 
 [sub_resource type="Resource" id="Resource_jbjm6"]
 script = ExtResource("3_1cgj2")
-ComboName = "Rage of Halone"
+ComboName = "Triple Strike"
 
 [resource]
 script = ExtResource("1_pwh2d")
@@ -30,8 +30,8 @@ VFXs = null
 Applications = Array[Object]([SubResource("Resource_hd7s4")])
 FlaggedApplications = Array[Object]([SubResource("Resource_3dqk6"), SubResource("Resource_jbjm6")])
 FlagCondition = SubResource("Resource_8yn62")
-Name = "Riot Blade"
+Name = "Double Strike"
 OnGcd = true
 Cd = 1.0
-Icon = ExtResource("2_gxlbv")
+Icon = ExtResource("4_xjqll")
 FlaggedOnly = false

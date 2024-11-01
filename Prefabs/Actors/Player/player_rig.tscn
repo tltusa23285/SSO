@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Actor/PlayerControl/Aimlook.cs" id="2_6ofnf"]
 [ext_resource type="Script" path="res://Scripts/DataStructures/PlayerClass.cs" id="2_jmmvl"]
-[ext_resource type="Resource" uid="uid://bsqy0y2c2eekx" path="res://Resources/__NotPld__/WarriorActions.tres" id="2_yjy7e"]
+[ext_resource type="Resource" uid="uid://bsqy0y2c2eekx" path="res://Resources/pc_War/WarriorActions.tres" id="2_yjy7e"]
 [ext_resource type="Script" path="res://Scripts/TempEffects/TemporaryEffectContainer.cs" id="4_8u4b5"]
 [ext_resource type="Script" path="res://Scripts/Actor/Actor.cs" id="4_v7hox"]
 [ext_resource type="Script" path="res://Scripts/Actor/PlayerControl/PlayerController.cs" id="5_njg6e"]
@@ -1726,13 +1726,12 @@ StatsPerLevel = {
 script = ExtResource("4_8u4b5")
 Actor = NodePath("..")
 
-[node name="PlayerController" type="Node" parent="." node_paths=PackedStringArray("LookControl", "PlayerClass", "Camera", "PlayerUI", "C_Actor")]
+[node name="PlayerController" type="Node" parent="." node_paths=PackedStringArray("LookControl", "PlayerClass", "Camera", "ActionBar", "C_Actor")]
 script = ExtResource("5_njg6e")
-ActionBufferTime = 1.0
 LookControl = NodePath("../Aimlook")
 PlayerClass = NodePath("../StatBlock")
 Camera = NodePath("../Aimlook/CamHold/Camera3D")
-PlayerUI = NodePath("../PUI/HotbarManager")
+ActionBar = NodePath("../PUI/ActionBarManager")
 C_Actor = NodePath("..")
 
 [node name="Aimlook" type="Node" parent="." node_paths=PackedStringArray("PlayerRoot", "FollowTarget", "Root", "CameraContainer", "Cam")]
@@ -2065,7 +2064,7 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("16_7bam0")
 
-[node name="HotbarManager" parent="PUI" node_paths=PackedStringArray("Player", "BookUI") instance=ExtResource("9_edsvc")]
+[node name="ActionBarManager" parent="PUI" node_paths=PackedStringArray("Player", "BookUI") instance=ExtResource("9_edsvc")]
 layout_mode = 1
 mouse_filter = 2
 Player = NodePath("../..")

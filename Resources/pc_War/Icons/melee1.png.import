@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cofonn1ejm2fy"
-path="res://.godot/imported/buff.png-0885631dec9a880e1dc737c25f5d567a.ctex"
+uid="uid://dum5c2kt75qxe"
+path="res://.godot/imported/melee1.png-093ca57b5d3faeb1bad07d75c15d50c2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/__NotPld__/Icons/buff.png"
-dest_files=["res://.godot/imported/buff.png-0885631dec9a880e1dc737c25f5d567a.ctex"]
+source_file="res://Resources/pc_War/Icons/melee1.png"
+dest_files=["res://.godot/imported/melee1.png-093ca57b5d3faeb1bad07d75c15d50c2.ctex"]
 
 [params]
 

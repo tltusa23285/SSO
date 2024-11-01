@@ -31,9 +31,17 @@ public partial class HotbarContainer : Container
 				yield return item;
 			}
 		}
-	}
+    }
+    public bool HandledInput(InputEvent @event)
+    {
+		foreach (var item in AButtons)
+		{
+			if (item.HandledInput(@event)) return true;
+		}
+		return false;
+    }
 
-	public ActionButton GetButton(ushort slot)
+    public ActionButton GetButton(ushort slot)
 	{
 		return AButtons[slot];
 	}

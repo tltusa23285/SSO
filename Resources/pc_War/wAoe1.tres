@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Commands/CombatAction.cs" id="1_0tk27"]
 [ext_resource type="Script" path="res://Scripts/Strategies/ApplicationStrats/ApplyDamage.cs" id="1_u6f8n"]
-[ext_resource type="Texture2D" uid="uid://dvn4d3ipcjyh6" path="res://Resources/__NotPld__/Icons/aoe1.png" id="2_bf0q3"]
+[ext_resource type="Texture2D" uid="uid://dvn4d3ipcjyh6" path="res://Resources/pc_War/Icons/aoe1.png" id="2_ernow"]
 [ext_resource type="Resource" uid="uid://cj1l701p7litr" path="res://Resources/Common/TargetStrats/RadialTarget_Range5.tres" id="2_tvgo0"]
 
 [sub_resource type="Resource" id="Resource_23v6n"]
@@ -11,13 +11,13 @@ Potency = 100
 
 [resource]
 script = ExtResource("1_0tk27")
-ComboAction = ""
+IsComboBreaker = false
 Targeting = ExtResource("2_tvgo0")
 VFXs = null
 Applications = Array[Object]([SubResource("Resource_23v6n")])
 FlaggedApplications = null
-Name = "Total Eclipse"
+Name = "Spinning Strike"
 OnGcd = true
 Cd = 1.0
-Icon = ExtResource("2_bf0q3")
+Icon = ExtResource("2_ernow")
 FlaggedOnly = false

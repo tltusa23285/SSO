@@ -8,6 +8,7 @@ namespace Actors
     public partial class PlayerController : ActorController
     {
         [ExportGroup("Player Controller")]
+        [Export] private float OGcdCoolDown = 0.5f;
         [Export] private float ActionBufferTime = 0.5f;
         private BarAction QueuedAction = null;
         [ExportSubgroup("Player")]
@@ -16,13 +17,13 @@ namespace Actors
 
         [ExportSubgroup("Target Selection")]
         [Export] private Camera3D Camera;
-        [Export] private PlayerUI PlayerUI;
+        [Export] private ActionBarManager ActionBar;
 
         #region Node Overrides
         protected override void OnReady()
         {
-            PlayerUI.Intialize();
-            PlayerUI.FillActionBook(C_Actor.ActionBook);
+            ActionBar.Intialize();
+            ActionBar.FillActionBook(C_Actor.ActionBook);
 
             foreach (var item in C_Actor.ActionBook.Actions)
             {
@@ -33,13 +34,12 @@ namespace Actors
                 {
                     foreach (var button in inputs)
                     {
-                        PlayerUI.AssignAction(button, item);
+                        ActionBar.AssignAction(button, item);
                     }
                 }
             }
         }
 
-        private double oGcdTimer = 0;
         private double GcdTimer = 0;
         private double AutoTimer = 0;
         private Vector2 InputDir;
@@ -50,7 +50,6 @@ namespace Actors
         {
             AutoTimer += delta;
             GcdTimer += delta;
-            oGcdTimer += delta;
             QueuedActionTimer -= delta;
 
             if (AutoTimer >= 2.5)
@@ -86,6 +85,7 @@ namespace Actors
                 C_Actor.TryJump(7.5f);
                 GetTree().Root.SetInputAsHandled();
             }
+            else if(ActionBar.HandledInput(@event)) GetTree().Root.SetInputAsHandled();
         }
 
         public override void _UnhandledInput(InputEvent @event)

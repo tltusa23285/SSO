@@ -51,14 +51,14 @@ public partial class ActionButton : Button
         Timer.Stop();
     }
 
-    public override void _Input(InputEvent @event)
+    public bool HandledInput(InputEvent @event)
     {
-        if (string.IsNullOrEmpty(InputName)) return;
+        if (string.IsNullOrEmpty(InputName)) return false;
         if (@event.IsActionPressed(InputName))
         {
             WasPressed = true;
             OnButtonDown();
-            GetTree().Root.SetInputAsHandled();
+            return true;
         }
         if (@event.IsActionReleased(InputName))
         {
@@ -66,9 +66,10 @@ public partial class ActionButton : Button
             {
                 WasPressed = false;
                 OnButtonUp();
-                GetTree().Root.SetInputAsHandled();
+                return true;
             }
         }
+        return false;
     }
 
     #region Data assignment

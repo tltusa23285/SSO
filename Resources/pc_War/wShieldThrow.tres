@@ -3,9 +3,9 @@
 [ext_resource type="Script" path="res://Scripts/Commands/CombatAction.cs" id="1_k4dvy"]
 [ext_resource type="Script" path="res://Scripts/Strategies/ApplicationStrats/ApplyDamage.cs" id="1_kfk8p"]
 [ext_resource type="Script" path="res://Scripts/Strategies/FlagStrats/TempEffectActive.cs" id="1_n4mm4"]
-[ext_resource type="Texture2D" uid="uid://xjhk1anp42fp" path="res://Resources/__NotPld__/Icons/shieIdthrow.png" id="2_rsykn"]
 [ext_resource type="Script" path="res://Scripts/Strategies/TargetStrat/CurrentTarget.cs" id="3_dh4b1"]
 [ext_resource type="Script" path="res://Scripts/Strategies/ApplicationStrats/RemoveTemporaryEffect.cs" id="3_tmuce"]
+[ext_resource type="Texture2D" uid="uid://xjhk1anp42fp" path="res://Resources/pc_War/Icons/shieIdthrow.png" id="4_6rghh"]
 
 [sub_resource type="Resource" id="Resource_84i7q"]
 script = ExtResource("1_n4mm4")
@@ -35,5 +35,5 @@ FlagCondition = SubResource("Resource_84i7q")
 Name = "Shield Throw"
 OnGcd = false
 Cd = 1.0
-Icon = ExtResource("2_rsykn")
+Icon = ExtResource("4_6rghh")
 FlaggedOnly = true

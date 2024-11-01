@@ -4,7 +4,7 @@ using Data;
 using Godot;
 using Inputs;
 
-public partial class PlayerUI : Control
+public partial class ActionBarManager : Control
 {
 	[Export] private Actor Player;
 
@@ -13,10 +13,17 @@ public partial class PlayerUI : Control
 		InitHotbars();
     }
 
-	#region Hotbar Management
-
 	[Export] private HotbarContainer[] Bars;
 	[Export] private ActionBookUI BookUI;
+
+	public bool HandledInput(InputEvent @event)
+	{
+		foreach (var bar in Bars) 
+		{ 
+			if(bar.HandledInput(@event)) return true; 
+		}
+		return false;
+	}
 
 	private void InitHotbars()
     {
@@ -58,5 +65,4 @@ public partial class PlayerUI : Control
 	{
 		Bars[bar].GetButton(slot).ClearData();
 	}
-	#endregion
 }

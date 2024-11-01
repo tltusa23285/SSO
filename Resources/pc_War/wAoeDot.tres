@@ -4,8 +4,8 @@
 [ext_resource type="Script" path="res://Scripts/Commands/CombatAction.cs" id="1_dsmhk"]
 [ext_resource type="Script" path="res://Scripts/TempEffects/TempEffectScripts/DamageOverTimeData.cs" id="2_efj00"]
 [ext_resource type="Script" path="res://Scripts/Strategies/ApplicationStrats/ApplyTemporaryEffect.cs" id="3_sjmmp"]
-[ext_resource type="Texture2D" uid="uid://mno71ldennt8" path="res://Resources/__NotPld__/Icons/aoedot.png" id="4_64ykr"]
 [ext_resource type="Resource" uid="uid://cj1l701p7litr" path="res://Resources/Common/TargetStrats/RadialTarget_Range5.tres" id="4_t58q7"]
+[ext_resource type="Texture2D" uid="uid://mno71ldennt8" path="res://Resources/pc_War/Icons/aoedot.png" id="4_udxpw"]
 
 [sub_resource type="Resource" id="Resource_voqqn"]
 script = ExtResource("1_8erq6")
@@ -32,13 +32,13 @@ Effect = SubResource("Resource_6lwop")
 
 [resource]
 script = ExtResource("1_dsmhk")
-ComboAction = ""
+IsComboBreaker = false
 Targeting = ExtResource("4_t58q7")
 VFXs = null
 Applications = Array[Object]([SubResource("Resource_voqqn"), SubResource("Resource_of511")])
 FlaggedApplications = null
-Name = "Circle of Scorn"
+Name = "Ignition Strike"
 OnGcd = false
 Cd = 30.0
-Icon = ExtResource("4_64ykr")
+Icon = ExtResource("4_udxpw")
 FlaggedOnly = false

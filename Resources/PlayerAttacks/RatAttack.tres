@@ -20,7 +20,7 @@ Priority = 2
 
 [resource]
 script = ExtResource("4_087br")
-ComboAction = ""
+IsComboBreaker = false
 Targeting = SubResource("Resource_b4xba")
 VFXs = Array[Object]([SubResource("Resource_6cjds")])
 Applications = Array[Object]([SubResource("Resource_kcf34")])
