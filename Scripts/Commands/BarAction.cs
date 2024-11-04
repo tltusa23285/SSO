@@ -38,7 +38,7 @@ namespace Commands
         [Export] public bool FlaggedOnly = false;
 
         public bool OnCD => CdTimer != null;
-        public double CdLeft => CdTimer != null ? CdTimer.TimeLeft : 1;
+        public double CdLeft => CdTimer != null ? CdTimer.TimeLeft : -1;
         [NonSerialized] private SceneTreeTimer CdTimer;
 
         public bool Initialize(Actor source)
@@ -50,6 +50,11 @@ namespace Commands
 
         public bool Execute()
         {
+            if (Source.ActionLimitTimer > 0)
+            {
+                CommandExecuted?.Invoke(false, this, $"Action Limit Exceeded");
+                return false;
+            }
             if (OnCD)
             {
                 CommandExecuted?.Invoke(false, this, $"On Cooldown {CdLeft}");

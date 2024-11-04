@@ -11,6 +11,7 @@ namespace Actors
         public LastCommandEventHandler CommandUsed;
 
         private string _lastCommand;
+        public double ActionLimitTimer = 0;
 
         public string NextComboAction
         {
@@ -30,6 +31,11 @@ namespace Actors
             Health.HealthChange += HealthUpdate;
             GCon.Setup(this);
             ActionBook.LoadBook(this);
+        }
+
+        public override void _Process(double delta)
+        {
+            ActionLimitTimer -= delta;
         }
 
         #region Statistics

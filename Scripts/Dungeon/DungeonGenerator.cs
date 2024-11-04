@@ -50,7 +50,6 @@ namespace Dungeon
                 for (int x = 0; x < Size.X; x++)
                 {
                     if (Map[x, y] == 0) continue;
-                    GD.Print($"{Map[x,y]}::{((DIRECTION)Map[x, y]).ToString()}");
                 }
             }
         }

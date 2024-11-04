@@ -10,6 +10,7 @@ namespace Actors
         [ExportGroup("Player Controller")]
         [Export] private float OGcdCoolDown = 0.5f;
         [Export] private float ActionBufferTime = 0.5f;
+        [Export] private float ActionLimiterTime = 0.5f;
         private BarAction QueuedAction = null;
         [ExportSubgroup("Player")]
         [Export] private Aimlook LookControl;
@@ -40,7 +41,6 @@ namespace Actors
             }
         }
 
-        private double GcdTimer = 0;
         private double AutoTimer = 0;
         private Vector2 InputDir;
         private Vector3 MoveDir;
@@ -49,7 +49,7 @@ namespace Actors
         protected override void OnProcess(in double delta)
         {
             AutoTimer += delta;
-            GcdTimer += delta;
+            C_Actor.ActionLimitTimer -= delta;
             QueuedActionTimer -= delta;
 
             if (AutoTimer >= 2.5)
@@ -61,7 +61,6 @@ namespace Actors
             // so we use -delta instead of 0 to effectively perform the queue on the frame after it comes off cooldown
             if (QueuedActionTimer <= -delta && QueuedAction != null)
             {
-                GD.Print($"Performing queued {QueuedAction.Name}");
                 QueuedAction.Execute();
                 QueuedAction = null;
             }
@@ -109,25 +108,33 @@ namespace Actors
                     {
                         if (item.OnGcd) item.SetCooldown(Actor.GCD);
                     }
+                    C_Actor.ActionLimitTimer = 0;
                 }
                 else
                 {
                     comm.SetCooldown(comm.Cd);
+
+                    C_Actor.ActionLimitTimer = ActionLimiterTime;
                 }
             }
             else
             {
-                GD.Print($"{comm.Name} :: {msg}");
-                if (QueuedAction != comm && comm.CdLeft <= ActionBufferTime)
+                if (QueuedAction != comm)
                 {
-                    GD.Print($"Queued {comm.Name}");
-                    QueuedAction = comm;
-                    QueuedActionTimer = comm.CdLeft;
+                    // queued because on cooldown
+                    if (comm.CdLeft >= 0 && comm.CdLeft <= ActionBufferTime)
+                    {
+                        QueuedAction = comm;
+                        QueuedActionTimer = comm.CdLeft;
+                    }
+                    else if (C_Actor.ActionLimitTimer > 0) // queued because of action limiter
+                    {
+                        QueuedAction = comm;
+                        QueuedActionTimer = C_Actor.ActionLimitTimer;
+                    }
                 }
             }
         }
-
-
 
         private bool TrySelectTarget(InputEventMouse input)
         {
