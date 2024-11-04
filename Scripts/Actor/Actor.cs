@@ -10,8 +10,31 @@ namespace Actors
         public delegate void LastCommandEventHandler(string comm);
         public LastCommandEventHandler CommandUsed;
 
+        [Signal]
+        public delegate void CastingStatusEventHandler(bool isCasting, float castTime);
+
         private string _lastCommand;
+
         public double ActionLimitTimer = 0;
+
+        private double CastTimer;
+
+        [Export] private double SlideCastBuffer = 0.3f;
+
+        public bool IsCasting {  get; private set; }
+
+        public void StartCasting(in float castTime)
+        {
+            IsCasting = true;
+            CastTimer = castTime;
+            EmitSignal(SignalName.CastingStatus, IsCasting, castTime);
+        }
+        public void StopCasting()
+        {
+            IsCasting = false;
+            EmitSignal(SignalName.CastingStatus, IsCasting, 0);
+        }
+
 
         public string NextComboAction
         {
@@ -36,6 +59,7 @@ namespace Actors
         public override void _Process(double delta)
         {
             ActionLimitTimer -= delta;
+            CastTimer -= delta;
         }
 
         #region Statistics
@@ -108,6 +132,8 @@ namespace Actors
         {
             MoveDir.X = (dir.Normalized() * speed).X;
             MoveDir.Z = (dir.Normalized() * speed).Z;
+
+            if (IsCasting && (MoveDir.X != 0 || MoveDir.Z != 0) && CastTimer > SlideCastBuffer) StopCasting();
         }
 
         public void TryJump(in float height)

@@ -8,7 +8,7 @@
 
 [sub_resource type="Resource" id="Resource_fx6qf"]
 script = ExtResource("1_t4qpq")
-StatToMod = "Str"
+StatToMod = "Atk"
 ModType = 1
 ModValue = 25
 EffectId = ""

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CombatAction" load_steps=11 format=3 uid="uid://bn2p4b7kefjnb"]
+[gd_resource type="Resource" script_class="CombatAction" load_steps=13 format=3 uid="uid://bn2p4b7kefjnb"]
 
 [ext_resource type="Script" path="res://Scripts/Strategies/ApplicationStrats/ApplyDamage.cs" id="1_kbvur"]
 [ext_resource type="Script" path="res://Scripts/Commands/CombatAction.cs" id="1_pwh2d"]
@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://bexn6pnfexwqt" path="res://Resources/Common/TargetStrats/CurrentTarget_Range2.tres" id="2_qwpkl"]
 [ext_resource type="Script" path="res://Scripts/Strategies/ApplicationStrats/SetCombo.cs" id="3_1cgj2"]
 [ext_resource type="Texture2D" uid="uid://5khs231pkjwt" path="res://Resources/pc_War/Icons/melee2.png" id="4_xjqll"]
+[ext_resource type="Script" path="res://Scripts/Strategies/VfxStrat/PlayAttackAnimation.cs" id="6_7unmo"]
 
 [sub_resource type="Resource" id="Resource_hd7s4"]
 script = ExtResource("1_kbvur")
@@ -22,11 +23,16 @@ Potency = 260
 script = ExtResource("3_1cgj2")
 ComboName = "Triple Strike"
 
+[sub_resource type="Resource" id="Resource_38bcr"]
+script = ExtResource("6_7unmo")
+Anim = "Attack_Strong"
+Priority = 2
+
 [resource]
 script = ExtResource("1_pwh2d")
 IsComboBreaker = true
 Targeting = ExtResource("2_qwpkl")
-VFXs = null
+VFXs = Array[Object]([SubResource("Resource_38bcr")])
 Applications = Array[Object]([SubResource("Resource_hd7s4")])
 FlaggedApplications = Array[Object]([SubResource("Resource_3dqk6"), SubResource("Resource_jbjm6")])
 FlagCondition = SubResource("Resource_8yn62")

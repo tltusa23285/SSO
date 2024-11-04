@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ActionBook" load_steps=10 format=3 uid="uid://bsqy0y2c2eekx"]
+[gd_resource type="Resource" script_class="ActionBook" load_steps=11 format=3 uid="uid://bsqy0y2c2eekx"]
 
 [ext_resource type="Resource" uid="uid://2qlupbhp54yp" path="res://Resources/pc_War/wCom1.tres" id="1_3u04c"]
 [ext_resource type="Resource" uid="uid://dirxccw57i3os" path="res://Resources/pc_War/wBasic.tres" id="1_yvqh3"]
@@ -9,8 +9,9 @@
 [ext_resource type="Resource" uid="uid://cw8xqwjsi3nj8" path="res://Resources/pc_War/wAoe1.tres" id="5_r114f"]
 [ext_resource type="Resource" uid="uid://cg1ub46mnh8mc" path="res://Resources/pc_War/wShieldThrow.tres" id="6_hmpt4"]
 [ext_resource type="Resource" uid="uid://chc7h55ew7f1g" path="res://Resources/pc_War/wAoeDot.tres" id="7_jekgv"]
+[ext_resource type="Resource" uid="uid://bmpwiem4mgx7r" path="res://Resources/pc_War/_castAttack.tres" id="8_ndpyc"]
 
 [resource]
 script = ExtResource("2_0cf7d")
 DefaultAttack = ExtResource("1_yvqh3")
-Commands = Array[Resource]([ExtResource("1_3u04c"), ExtResource("2_muq6f"), ExtResource("3_rb3x5"), ExtResource("4_vd7xj"), ExtResource("5_r114f"), ExtResource("6_hmpt4"), ExtResource("7_jekgv")])
+Commands = Array[Resource]([ExtResource("1_3u04c"), ExtResource("2_muq6f"), ExtResource("3_rb3x5"), ExtResource("4_vd7xj"), ExtResource("5_r114f"), ExtResource("6_hmpt4"), ExtResource("7_jekgv"), ExtResource("8_ndpyc")])

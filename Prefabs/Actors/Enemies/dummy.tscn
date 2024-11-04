@@ -1061,10 +1061,9 @@ _data = {
 
 [node name="Stats" parent="." index="2"]
 BaseStats = {
-"Dex": 10,
-"Int": 10,
-"Str": 10,
-"Vit": 1000
+"Atk": 10,
+"Def": 10,
+"MaxHP": 10000
 }
 
 [node name="EnemyController" parent="." index="4"]

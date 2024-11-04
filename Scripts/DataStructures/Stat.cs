@@ -8,13 +8,11 @@ namespace Data
     public class Stat
     {
         #region Globals
-        public static string[] CoreStats => new string[] { Vit, Str, Dex, Int };
 
         #region Stat Strings
-        public const string Vit = nameof(Vit);
-        public const string Str = nameof(Str);
-        public const string Dex = nameof(Dex);
-        public const string Int = nameof(Int);
+        public const string MaxHP = nameof(MaxHP);
+        public const string Atk = nameof(Atk);
+        public const string Def = nameof(Def);
         #endregion
         #endregion
 

@@ -17,19 +17,17 @@ namespace Data
         [ExportGroup("Stat Blocks")]
         [Export] private GDict BaseStats = new GDict()
         {
-            { Stat.Vit, 10 },
-            { Stat.Dex, 10 },
-            { Stat.Str, 10 },
-            { Stat.Int, 10 },
+            { Stat.MaxHP,  100 },
+            { Stat.Atk, 10 },
+            { Stat.Def, 10 },
         };
 
         [Export]
         private GDict StatsPerLevel = new GDict()
         {
-            { Stat.Vit, 0 },
-            { Stat.Dex, 0 },
-            { Stat.Str, 0 },
-            { Stat.Int, 0 },
+            { Stat.MaxHP, 0 },
+            { Stat.Atk, 0 },
+            { Stat.Def, 0 },
         };
 
         private SDict Stats;
@@ -107,8 +105,8 @@ namespace Data
         #endregion
 
         #region StatCalcs
-        public virtual int MaxHP => (GetStat(Stat.Vit, out int v) ? v * 10 : 100);
-        public virtual int AttackPower => (GetStat(Stat.Str, out int v) ? v : 1);
+        public virtual int MaxHP => (GetStat(Stat.MaxHP, out int v) ? v : 100);
+        public virtual int AttackPower => (GetStat(Stat.Atk, out int v) ? v : 1);
         #endregion
     } 
 }
