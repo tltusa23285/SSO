@@ -13,6 +13,7 @@ EffectID = "Throw Ready"
 
 [sub_resource type="Resource" id="Resource_w1w4c"]
 script = ExtResource("1_kfk8p")
+PotencyContext = 0
 Potency = 100
 
 [sub_resource type="Resource" id="Resource_csx0s"]

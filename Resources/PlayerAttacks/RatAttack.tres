@@ -1,13 +1,23 @@
-[gd_resource type="Resource" script_class="CombatAction" load_steps=8 format=3 uid="uid://dh1cqq0smifh2"]
+[gd_resource type="Resource" script_class="CombatAction" load_steps=11 format=3 uid="uid://dh1cqq0smifh2"]
 
+[ext_resource type="PackedScene" uid="uid://b6pa0ujatxrbv" path="res://Scripts/Hazards/OneShotHazard.tscn" id="1_cxmam"]
 [ext_resource type="Script" path="res://Scripts/Strategies/ApplicationStrats/ApplyDamage.cs" id="1_kyrm7"]
 [ext_resource type="Script" path="res://Scripts/Strategies/TargetStrat/CurrentTarget.cs" id="2_xthr1"]
+[ext_resource type="Script" path="res://Scripts/Strategies/ApplicationStrats/CreateDamageArea.cs" id="3_2mr12"]
 [ext_resource type="Script" path="res://Scripts/Strategies/VfxStrat/PlayAttackAnimation.cs" id="3_vc6sf"]
 [ext_resource type="Script" path="res://Scripts/Commands/CombatAction.cs" id="4_087br"]
 
-[sub_resource type="Resource" id="Resource_kcf34"]
+[sub_resource type="Resource" id="Resource_qgjba"]
 script = ExtResource("1_kyrm7")
+PotencyContext = 0
 Potency = 100
+
+[sub_resource type="Resource" id="Resource_idufu"]
+script = ExtResource("3_2mr12")
+Area = ExtResource("1_cxmam")
+CastTime = 3.0
+Size = 3.0
+AreaApps = Array[Object]([SubResource("Resource_qgjba")])
 
 [sub_resource type="Resource" id="Resource_b4xba"]
 script = ExtResource("2_xthr1")
@@ -23,9 +33,9 @@ script = ExtResource("4_087br")
 IsComboBreaker = false
 Targeting = SubResource("Resource_b4xba")
 VFXs = Array[Object]([SubResource("Resource_6cjds")])
-Applications = Array[Object]([SubResource("Resource_kcf34")])
+Applications = Array[Object]([SubResource("Resource_idufu")])
 FlaggedApplications = null
-Name = ""
+Name = "Bite"
 OnGcd = true
-Cd = 1.0
+Cd = 6.0
 FlaggedOnly = false

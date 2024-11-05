@@ -2029,6 +2029,7 @@ bones/36/rotation = Quaternion(-0.0369215, -4.66069e-10, -0.0196171, 0.999126)
 bones/36/scale = Vector3(1, 1, 1)
 
 [node name="Body" type="MeshInstance3D" parent="GraphicNodes/Graphic/guy_basic_anim/Armature/Skeleton3D"]
+layers = 2
 mesh = SubResource("ArrayMesh_6qcvh")
 skin = SubResource("Skin_5gqhr")
 
@@ -2038,9 +2039,10 @@ libraries = {
 }
 autoplay = "Idle"
 
-[node name="Health" type="Node" parent="."]
+[node name="Health" type="Node" parent="." node_paths=PackedStringArray("Source")]
 script = ExtResource("6_dwiof")
 MaxHealth = 100
+Source = NodePath("..")
 
 [node name="PUI" type="Control" parent="."]
 layout_mode = 3

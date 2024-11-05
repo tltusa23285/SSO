@@ -1066,9 +1066,6 @@ BaseStats = {
 "MaxHP": 10000
 }
 
-[node name="EnemyController" parent="." index="4"]
-process_mode = 4
-
 [node name="Graphic" parent="TransformBreak" index="0" node_paths=PackedStringArray("AnimPlayer")]
 AnimPlayer = NodePath("rat/AnimationPlayer")
 
@@ -1322,6 +1319,7 @@ bones/32/scale = Vector3(1, 1, 1.00001)
 
 [node name="Cylinder" type="MeshInstance3D" parent="TransformBreak/Graphic/rat/Armature/Skeleton3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1.61, 0, 0, 0, 1, 0, 1.25, 0)
+layers = 2
 mesh = SubResource("CylinderMesh_ofrnb")
 skin = SubResource("Skin_amlmx")
 

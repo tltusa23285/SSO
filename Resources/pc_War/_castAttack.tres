@@ -7,6 +7,7 @@
 
 [sub_resource type="Resource" id="Resource_0cr48"]
 script = ExtResource("1_e1atu")
+PotencyContext = 0
 Potency = 500
 
 [sub_resource type="Resource" id="Resource_pyh26"]

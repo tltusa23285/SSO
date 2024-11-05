@@ -10,6 +10,7 @@
 
 [sub_resource type="Resource" id="Resource_hd7s4"]
 script = ExtResource("1_kbvur")
+PotencyContext = 0
 Potency = 100
 
 [sub_resource type="Resource" id="Resource_8yn62"]
@@ -17,6 +18,7 @@ script = ExtResource("2_jelfr")
 
 [sub_resource type="Resource" id="Resource_3dqk6"]
 script = ExtResource("1_kbvur")
+PotencyContext = 0
 Potency = 260
 
 [sub_resource type="Resource" id="Resource_jbjm6"]

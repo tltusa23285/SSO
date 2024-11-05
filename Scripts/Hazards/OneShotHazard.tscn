@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://b6pa0ujatxrbv"]
+
+[ext_resource type="Script" path="res://Scripts/Hazards/OneShotDamageArea.cs" id="1_2bbdk"]
+[ext_resource type="Texture2D" uid="uid://ccbimximsx80s" path="res://Art/Decals/CircleHazard.png" id="3_u1far"]
+[ext_resource type="Texture2D" uid="uid://d0kh6baftv2v8" path="res://Art/Decals/CircleHazard_Filled.png" id="4_g6o61"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_hff4d"]
+height = 5.0
+radius = 2.0
+
+[node name="OneShotHazard" type="Area3D" node_paths=PackedStringArray("Base", "Fill", "Timer")]
+collision_mask = 6
+script = ExtResource("1_2bbdk")
+Base = NodePath("Decal")
+Fill = NodePath("Decal2")
+Timer = NodePath("Timer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("CylinderShape3D_hff4d")
+
+[node name="Decal" type="Decal" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00255299, -0.117165, -0.00124526)
+size = Vector3(4, 5, 4)
+texture_albedo = ExtResource("3_u1far")
+modulate = Color(1, 0, 0, 1)
+upper_fade = 0.0
+lower_fade = 0.0
+cull_mask = 1
+
+[node name="Decal2" type="Decal" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00255299, -0.117165, -0.00124526)
+size = Vector3(1, 1, 1)
+texture_albedo = ExtResource("4_g6o61")
+modulate = Color(1, 0, 0, 1)
+upper_fade = 0.0
+lower_fade = 0.0
+cull_mask = 1
+
+[node name="Timer" type="Timer" parent="."]

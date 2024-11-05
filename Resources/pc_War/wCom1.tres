@@ -9,6 +9,7 @@
 
 [sub_resource type="Resource" id="Resource_hd7s4"]
 script = ExtResource("1_bhaol")
+PotencyContext = 0
 Potency = 150
 
 [sub_resource type="Resource" id="Resource_a7ow5"]

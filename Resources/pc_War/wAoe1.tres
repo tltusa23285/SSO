@@ -8,6 +8,7 @@
 
 [sub_resource type="Resource" id="Resource_23v6n"]
 script = ExtResource("1_u6f8n")
+PotencyContext = 0
 Potency = 100
 
 [sub_resource type="Resource" id="Resource_paa37"]

@@ -6,6 +6,7 @@
 
 [sub_resource type="Resource" id="Resource_hd7s4"]
 script = ExtResource("1_04dpy")
+PotencyContext = 0
 Potency = 100
 
 [sub_resource type="Resource" id="Resource_aawi8"]
