@@ -41,7 +41,6 @@ namespace Hazards
             Timer.Start(CastTime);
             while (!Timer.IsStopped())
             {
-                GD.Print((float)Mathf.InverseLerp(CastTime, 0, Timer.TimeLeft));
                 Fill.Size = Vector3.Zero.Lerp(Base.Size, (float)Mathf.InverseLerp(CastTime, 0, Timer.TimeLeft));
                 await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
             }

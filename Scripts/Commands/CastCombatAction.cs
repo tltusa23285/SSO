@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Strategies;
 using Actors;
 using System;
+using EventArgs;
 
 namespace Commands.Combat
 {
@@ -23,20 +24,20 @@ namespace Commands.Combat
 
             CastInterrupted = false;
 
-            Source.CastingStatus += CastUpdate;
-            Source.StartCasting(CastTime);
+            if (!Source.Casting.TryStartCasting(CastTime)) return false;
+
+            Source.Events.ActionChange += CastUpdate;
 
             DelayedExecution(targets);
-
             return true;
         }
 
-        private void CastUpdate(bool isCasting, float _)
+        private void CastUpdate(ActorStateChangeArgs<ACTOR_ACTION_STATE> args)
         {
-            if (!isCasting)
+            if (args.Next != ACTOR_ACTION_STATE.Casting)
             {
                 CastInterrupted = true;
-                Source.CastingStatus -= CastUpdate;
+                Source.Events.ActionChange -= CastUpdate;
             }
         }
 
@@ -46,9 +47,9 @@ namespace Commands.Combat
 
             if (CastInterrupted) return;
 
-            Source.CastingStatus -= CastUpdate;
+            Source.Events.ActionChange -= CastUpdate;
 
-            Source.StopCasting();
+            Source.Casting.StopCast();
 
             foreach (var item in VFXs)
             {

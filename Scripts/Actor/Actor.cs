@@ -1,5 +1,6 @@
 using Data;
 using Godot;
+using System;
 using TemporaryEffects;
 
 namespace Actors
@@ -10,31 +11,10 @@ namespace Actors
         public delegate void LastCommandEventHandler(string comm);
         public LastCommandEventHandler CommandUsed;
 
-        [Signal]
-        public delegate void CastingStatusEventHandler(bool isCasting, float castTime);
 
         private string _lastCommand;
 
         public double ActionLimitTimer = 0;
-
-        private double CastTimer;
-
-        [Export] private double SlideCastBuffer = 0.3f;
-
-        public bool IsCasting {  get; private set; }
-
-        public void StartCasting(in float castTime)
-        {
-            IsCasting = true;
-            CastTimer = castTime;
-            EmitSignal(SignalName.CastingStatus, IsCasting, castTime);
-        }
-        public void StopCasting()
-        {
-            IsCasting = false;
-            EmitSignal(SignalName.CastingStatus, IsCasting, 0);
-        }
-
 
         public string NextComboAction
         {
@@ -47,6 +27,20 @@ namespace Actors
         }
 
         private double Gravity;
+
+        public ActorEventContainer Events { get; private set; }
+        public ActorStateContainer States { get; private set; }
+
+        #region Casting
+        [Signal]
+        public delegate void CastingStatusEventHandler(bool isCasting, float castTime);
+
+        [ExportGroup("Cast Settings")]
+        [Export] public double SlideCastBuffer = 0.3f;
+        public ActorCastingContainer Casting { get; private set; }
+        #endregion
+
+
         public override void _Ready()
         {
             Gravity = ProjectSettings.GetSetting("physics/3d/default_gravity").AsDouble();
@@ -54,12 +48,16 @@ namespace Actors
             Health.HealthChange += HealthUpdate;
             GCon.Setup(this);
             ActionBook.LoadBook(this);
+
+            States = new ActorStateContainer(this);
+            Events = new ActorEventContainer(this);
+            Casting = new ActorCastingContainer(this, SlideCastBuffer);
         }
 
         public override void _Process(double delta)
         {
             ActionLimitTimer -= delta;
-            CastTimer -= delta;
+            Casting.Process(delta);
         }
 
         #region Statistics
@@ -132,8 +130,6 @@ namespace Actors
         {
             MoveDir.X = (dir.Normalized() * speed).X;
             MoveDir.Z = (dir.Normalized() * speed).Z;
-
-            if (IsCasting && (MoveDir.X != 0 || MoveDir.Z != 0) && CastTimer > SlideCastBuffer) StopCasting();
         }
 
         public void TryJump(in float height)
@@ -155,6 +151,14 @@ namespace Actors
             UpdateGravity(delta);
             this.Velocity = MoveDir;
             MoveAndSlide();
+            UpdateMoveState();
+        }
+
+        private void UpdateMoveState()
+        {
+            if (this.Velocity == Vector3.Zero) States.MoveState = ACTOR_MOVE_STATE.Standing;
+            else if (this.Velocity.Y != 0) States.MoveState = ACTOR_MOVE_STATE.Falling;
+            else States.MoveState = ACTOR_MOVE_STATE.Moving;
         }
 
         #endregion

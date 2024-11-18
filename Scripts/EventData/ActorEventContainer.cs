@@ -17,8 +17,14 @@ namespace Actors
 			Source = source;
 		}
 
-		public event ActorEventHandler<DamageEventArgs> ActorDamaged;
-		public void FireActorDamaged(DamageEventArgs args) => ActorDamaged?.Invoke(args);
-		public void FlushActorDamaged() => ActorDamaged = null;
-	} 
+		public event ActorEventHandler<DamageEventArgs> Damaged;
+		public void FireActorDamaged(DamageEventArgs args) => Damaged?.Invoke(args);
+
+
+		public event ActorEventHandler<ActorStateChangeArgs<ACTOR_ACTION_STATE>> ActionChange;
+		public void FireActionChange(ActorStateChangeArgs<ACTOR_ACTION_STATE> args) => ActionChange?.Invoke(args);
+
+        public event ActorEventHandler<ActorStateChangeArgs<ACTOR_MOVE_STATE>> MoveChange;
+        public void FireMoveChange(ActorStateChangeArgs<ACTOR_MOVE_STATE> args) => MoveChange?.Invoke(args);
+    } 
 }
