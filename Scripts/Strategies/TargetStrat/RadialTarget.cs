@@ -13,11 +13,10 @@ namespace Strategies
             targets = new HashSet<Actor>();
             foreach (var item in source.GetWorld3D().DirectSpaceState.OverlapSphere(source.GlobalPosition, Radius))
             {
-                GodotObject obj = item["collider"].AsGodotObject();
-                if (obj is not Actor) continue;
-                Actor other = obj as Actor;
+                if (item is not Actor) continue;
+                Actor other = item as Actor;
                 if (other == source) continue;
-                targets.Add(obj as Actor);
+                targets.Add(item as Actor);
             }
             return true;
         }

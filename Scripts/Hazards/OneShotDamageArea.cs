@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace Hazards
 {
-	public partial class OneShotDamageArea : Area3D
+	public partial class OneShotDamageArea : Node3D
     {
         private float CastTime = 1;
         [Export] private Decal Base;
@@ -54,7 +54,7 @@ namespace Hazards
         protected void Apply()
         {
             HashSet<Actor> targets = new HashSet<Actor>();
-            foreach (var item in this.GetOverlappingBodies())
+            foreach (var item in this.GetWorld3D().DirectSpaceState.OverlapSphere(this.GlobalPosition, Base.Size.X))
             {
                 if (item is Actor)
                 {
